@@ -115,14 +115,23 @@
         .cartas :hover{
             background-color:#e7e7e7
         }
-    
+        .borrar{
+        text-decoration:none ;
+        color: #000000;
+        }
+        .general img.parrafos{
+            margin-bottom: -20px;
+        }
+        .general p{
+            margin-bottom: 1px;
+        }
         .pictograma{
-            
+           
             background-color: #ddf5c2;
-            padding: 3px;
+            padding: 2px;
             
             border-radius:10px;
-            width: 90px;
+            width: 95px;
            
         }
         .pictograma1{
@@ -131,11 +140,12 @@
             padding: 3px;
             
             border-radius:10px;
-            width: 90px;
+            width: 95px;
         }
         .parrafos{
             font-size: 11px;
             text-align: center;
+            
         }
         .parrafos1{
             font-size: 11px;
@@ -146,7 +156,7 @@
             padding: 3px;
             
             border-radius:10px;
-            width: 90px;
+            width: 95px;
         }
         
         h1, h2 {
@@ -1304,7 +1314,7 @@
                 padding: 3px;
                 
                 border-radius:10px;
-                width: 60px;
+                width: 80px;
             }
             .pictograma1{
                 
@@ -1312,7 +1322,7 @@
                 padding: 3px;
                 
                 border-radius:10px;
-                width: 50px;
+                width: 80px;
             }
             .pictogramacarpeta{
             
@@ -1320,10 +1330,10 @@
                 padding: 3px;
                 
                 border-radius:10px;
-                width: 60px;
+                width: 80px;
             }
             .parrafos{
-                font-size: 10px;
+                font-size: 11px;
             }
             .phrase-item img {
                 max-width: 50px; /* Ajusta el tamaño según sea necesario */
@@ -1332,4 +1342,8 @@
                 border-radius: 10px;
                 padding: 1px;
             }
+            .borrar{
+                display: none;
+            }
+           
  }

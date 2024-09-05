@@ -50,7 +50,9 @@ const translations = {
         casa: "CASA",
         calendario: "CALENDARIO",
         objetos: "OBJETOS",
-        escuela: "ESCUELA"
+        escuela: "ESCUELA",
+        alimentos: "ALIMENTOS",
+        numeros1: "NUMEROS1",
     },
     en: {
         
@@ -102,7 +104,9 @@ const translations = {
         casa: "HOUSE",
         calendario: "CALENDAR",
         objetos: "OBJECTS",
-        escuela: "SCHOOL"
+        escuela: "SCHOOL",
+        alimentos: "FOOD",
+        numeros1: "NUMBERS",
     }
 };
 
@@ -157,7 +161,10 @@ function setLanguage(lang) {
         casa: 'casa',
         calendario: 'calendario',
         objetos: 'objetos',
-        escuela: 'escuela'
+        escuela: 'escuela',
+        alimentos: "alimentos",
+        numeros1: "numeros1",
+        
     };
 
     Object.keys(elements).forEach(key => {
@@ -207,18 +214,18 @@ const ids = {
     'es': 'es',
     'estar': 'estar',
     'iralbaño': 'ir al baño',
-    'alimentos': 'alimentos',
+    'alimentos1': 'alimentos',
     'bebidas': 'bebidas',
     'masemociones': 'mas emociones',
-    'comoestas': '¿Cómo estás?',
+    'comoestass': '¿Cómo estás?',
     'mal': 'mal',
     'bien': 'bien',
-    'hola': 'hola',
+    'hola1': 'hola',
     'buendia': 'buen día',
     'graciass': 'gracias',
     'chau': 'chau',
-    'si': 'si',
-    'no': 'no',
+    'si1': 'si',
+    'no1': 'no',
     'mas': 'más',
     'menos': 'menos',
     'quieroo': 'quiero',
@@ -230,7 +237,10 @@ const ids = {
         'calendario': 'calendario',
         'objetos': 'objetos',
         'escuela4': 'escuela',
-};
+        'numeros': 'numeros'
+        
+}; 
+
 
 // Asocia el evento 'click' para cada ID en la lista
 Object.keys(ids).forEach(id => {
@@ -641,5 +651,43 @@ document.querySelectorAll('.emocion-pictograma').forEach(function(pictograma) {
     var emocionesModal = new bootstrap.Modal(document.getElementById('emocionesModal'));
     emocionesModal.show(); // Mostrar el modal de emociones
   });
-
+ 
+// Manejo de selección de pictogramas de numeros y agregarlos al contenedor de frases
+document.querySelectorAll('.numeros-pictograma').forEach(function(pictograma) {
+    pictograma.addEventListener('click', function() {
+      // Obtener la palabra del pictograma seleccionado
+      var word = pictograma.getAttribute('data-word');
+      
+      // Crear un nuevo elemento para agregar la imagen al contenedor de frases
+      var newPictogram = document.createElement('div');
+      newPictogram.classList.add('pictograma-selected');
+      
+      // Crear un nuevo elemento de imagen
+      var imgElement = document.createElement('img');
+      imgElement.src = pictograma.src;
+      imgElement.alt = pictograma.alt;
+      imgElement.width = 80; // Mantener el mismo tamaño
+      
+      // Agregar la imagen al nuevo elemento
+      newPictogram.appendChild(imgElement);
+      
+      // Agregar el nuevo pictograma (imagen) al contenedor de frases
+      document.getElementById('phrase-container').appendChild(newPictogram);
+      
+      // Reproducir el nombre de la emoción seleccionada usando SpeechSynthesis
+      var utterance = new SpeechSynthesisUtterance(word);
+      speechSynthesis.speak(utterance);
+      
+      // Cerrar el modal
+      var modal = bootstrap.Modal.getInstance(document.getElementById('numerosModal'));
+      modal.hide();
+    });
+  });
+  
+  // Abrir modal de emociones cuando se hace clic en la imagen de "Emociones"
+  document.getElementById('numeros-link').addEventListener('click', function(event) {
+    event.preventDefault(); // Evitar comportamiento predeterminado del enlace
+    var numerosModal = new bootstrap.Modal(document.getElementById('numerosModal'));
+    numerosModal.show(); // Mostrar el modal de emociones
+  });
  
