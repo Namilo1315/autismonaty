@@ -205,14 +205,14 @@ const ids = {
     'uva': 'uvas',
     'pera': 'pera',
     'tu': 'tu',
-    'el': 'el',
+    'el': 'él',
     'nosotross': 'nosotros',
     'ellos': 'ellos',
     'hacer': 'hacer',
     'poner': 'poner',
     'ir': 'ir',
     'es': 'es',
-    'estar': 'estar',
+    'estar': 'estoy',
     'iralbaño': 'ir al baño',
     'alimentos1': 'alimentos',
     'bebidas': 'bebidas',
@@ -237,7 +237,22 @@ const ids = {
         'calendario': 'calendario',
         'objetos': 'objetos',
         'escuela4': 'escuela',
-        'numeros': 'numeros'
+        'numeros': 'numeros',
+        'lindo': 'lindo',
+        'grande': 'grande',
+        'pequeño': 'pequeño',
+        'animales': 'animales',
+        'buenasnoches': 'buenasnoches',
+        'feliz': 'feliz',
+        'enojado': 'enojado',
+        'tengo': 'tengo',
+        'teamo': 'teamo',
+        'frutas': 'frutas',
+        'ropa': 'ropa',
+        '+acciones': 'mas acciones',
+        'preposiciones': ' mas preposiciones',
+        'calendario': 'calendario',
+        'objetos': 'objetos',
         
 }; 
 
@@ -478,7 +493,7 @@ document.addEventListener('DOMContentLoaded', () => {
         pictogramGrid.innerHTML = '';
         pictograms.forEach(pictogram => {
             const div = document.createElement('div');
-            div.className = 'col-lg-2 col-md-3 col-sm-4 col-xs-6 text-center';
+            div.className = 'col-lg-2 col-md-4 col-sm-4 col-xs-6 text-center';
             div.innerHTML = `
                 <img src="${pictogram.src}" alt="${pictogram.word}" class="pictograma" data-word="${pictogram.word}" width="100">
                 <p class="fw-bold">${pictogram.word.toUpperCase()}</p>
