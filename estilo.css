@@ -126,6 +126,7 @@
         .general p{
             margin-bottom: 1px;
         }
+    
         .pictograma{
            
             
@@ -258,86 +259,17 @@
 
         }   
          */
-        #inicio .contenido header {
-            background-color: rgb(255, 255, 255);
-            position: fixed;
-            width: 100%;
-            z-index: 1100;
-            top: 0;
-        }
-        
-        #inicio .contenido header .contenido-header {
-            max-width: 1100px;
-            margin: auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 6px 10px;
-        }
-        
-        
-        #inicio .contenido header .contenido-header nav ul {
-            list-style: none;
-            display: flex;
-            align-items: center;
-            margin-top: 10px;
-            
-        }
-        
-        #inicio .contenido header .contenido-header nav ul li a {
-            text-decoration: none;
-            color: rgb(0, 0, 0);
-            margin: 0 12px;
-            font-weight: 600;
-            transition: .5s;
-            font-size: 22px;
-            }
-        
-        #inicio .contenido header .contenido-header nav ul li a:hover {
-            color:#1c3692;
-            
-            font-weight: 800;
-        
-            
-        }
-        
-        #inicio .contenido header .contenido-header .redes a {
-            text-decoration: none;
-            font-size: 16px;
-            color:#ffffff;
-            display: inline-block;
-            margin-left: 10px;
-            transition: .5s;
-            font-weight: 500;
-            padding: 5px;
-            background-color: #1c3692bb;
-            
-            
-        }
-        
-        #inicio .contenido header .contenido-header .redes a:hover {
-            color:#ffffff;
-            font-weight: 600;
-            transform: scale(1.1, 1.1);
-        }
-        
-        #inicio .contenido header .contenido-header .seleccionado {
-            color:#db2427;
-            
-        }
-        
-        #inicio .contenido .presentacion {
-            height: 75vh;
-            margin: auto;
-           
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-    
-        }
        
         
+        .seleccionado {
+         font-size: 22px;
+        
+            
+        }
+        .parrafop{
+            font-weight: 500;
+        }
+       
         
         #inicio .contenido .presentacion .ayuda1 h3 {
             display: none;
