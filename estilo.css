@@ -119,7 +119,13 @@
         text-decoration:none ;
         color: #000000;
         }
-        
+        #drawCanvas {
+            background-color: white;
+            border: 1px solid #000;
+        }
+        .tools {
+            margin-bottom: 10px;
+        }
         .general img.parrafos{
             margin-bottom: -10px;
         }

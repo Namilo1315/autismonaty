@@ -1,3 +1,122 @@
+// Configuración inicial
+let canvas = document.getElementById('drawCanvas');
+let ctx = canvas.getContext('2d');
+let drawing = false;
+let currentColor = 'black';
+let lineWidth = 5;
+let eraserMode = false;
+
+// Función para obtener las coordenadas del mouse o del toque
+function getMousePos(canvas, evt) {
+    let rect = canvas.getBoundingClientRect();
+    return {
+        x: evt.clientX - rect.left,
+        y: evt.clientY - rect.top
+    };
+}
+
+// Eventos para mouse
+canvas.addEventListener('mousedown', startDrawing);
+canvas.addEventListener('mousemove', draw);
+canvas.addEventListener('mouseup', stopDrawing);
+canvas.addEventListener('mouseout', stopDrawing);
+
+// Eventos para touch (en pantallas táctiles)
+canvas.addEventListener('touchstart', startDrawingTouch);
+canvas.addEventListener('touchmove', drawTouch);
+canvas.addEventListener('touchend', stopDrawingTouch);
+
+// Función para iniciar el dibujo (con mouse)
+function startDrawing(e) {
+    drawing = true;
+    ctx.beginPath();
+    let pos = getMousePos(canvas, e);
+    ctx.moveTo(pos.x, pos.y);
+    ctx.lineWidth = lineWidth;
+    ctx.strokeStyle = eraserMode ? 'white' : currentColor;
+    e.preventDefault(); // Evitar comportamientos predeterminados
+}
+
+// Función para dibujar (con mouse)
+function draw(e) {
+    if (!drawing) return;
+    let pos = getMousePos(canvas, e);
+    ctx.lineTo(pos.x, pos.y);
+    ctx.stroke();
+    e.preventDefault(); // Evitar comportamientos predeterminados
+}
+
+// Función para detener el dibujo (con mouse)
+function stopDrawing() {
+    drawing = false;
+    ctx.closePath();
+}
+
+// Función para iniciar el dibujo (con toque)
+function startDrawingTouch(e) {
+    drawing = true;
+    ctx.beginPath();
+    let touch = e.touches[0];
+    let pos = getMousePos(canvas, touch);
+    ctx.moveTo(pos.x, pos.y);
+    ctx.lineWidth = lineWidth;
+    ctx.strokeStyle = eraserMode ? 'white' : currentColor;
+    e.preventDefault();
+}
+
+// Función para dibujar (con toque)
+function drawTouch(e) {
+    if (!drawing) return;
+    let touch = e.touches[0];
+    let pos = getMousePos(canvas, touch);
+    ctx.lineTo(pos.x, pos.y);
+    ctx.stroke();
+    e.preventDefault();
+}
+
+// Función para detener el dibujo (con toque)
+function stopDrawingTouch() {
+    drawing = false;
+    ctx.closePath();
+}
+
+// Función para cambiar el color de dibujo
+function setColor(color) {
+    currentColor = color;
+    eraserMode = false;  // Apagar el modo borrador cuando seleccionas un color
+}
+
+// Función para habilitar la herramienta de borrador
+function setEraser() {
+    eraserMode = true;
+    lineWidth = 20;  // Tamaño más grande para la goma
+}
+
+// Función para limpiar todo el lienzo
+function clearCanvas() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+// Función para dibujar figuras geométricas
+function drawShape(shape) {
+    ctx.beginPath();
+    if (shape === 'circle') {
+        ctx.arc(400, 300, 50, 0, Math.PI * 2, true);
+    } else if (shape === 'rectangle') {
+        ctx.rect(300, 200, 150, 100);
+    }
+    ctx.fillStyle = currentColor;
+    ctx.fill();
+}
+
+// Función para guardar el dibujo como imagen
+function saveDrawing() {
+    let dataURL = canvas.toDataURL('image/png');
+    let link = document.createElement('a');
+    link.href = dataURL;
+    link.download = 'dibujo.png';
+    link.click();
+}
 
 const translations = {
     es: {
