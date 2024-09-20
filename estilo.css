@@ -121,10 +121,16 @@
         }
         #drawCanvas {
             background-color: white;
-            border: 1px solid #000;
+            border: 2px solid #000000;
         }
         .tools {
             margin-bottom: 10px;
+        }
+        .canvas-responsive {
+            width: 80%;
+            height: auto;
+            border: 1px solid black;
+            max-width: auto; /* Mantener una proporción máxima */
         }
         .general img.parrafos{
             margin-bottom: -10px;
