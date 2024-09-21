@@ -77,8 +77,8 @@
 }
 
 .color-circle {
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%; /* Círculos perfectos */
     cursor: pointer;
     border: 1px solid #040404; /* Borde blanco */
@@ -137,7 +137,8 @@
 @media (max-width: 768px) {
     .canvas-responsive {
         width: 100% !important;
-        height: auto !important;
+        height: 80hv;
+
     }
 
     /* Ajuste del tamaño de los botones */
@@ -172,7 +173,8 @@
 @media (max-width: 576px) {
     .canvas-responsive {
         width: 100% !important;
-        height: 300px !important;
+        height: 80hv;
+
     }
 
     /* Botones aún más pequeños */
@@ -201,33 +203,33 @@
       <!-- SECCION INFORMACION -->
 
       <div class="container-fluid text-center ">
-        <div class="row m-auto">
+        <div class="row m-auto ">
             
-          <div class="col-md-12 m-auto text-center">
-            <div class="tools">
+          <div class="col-md-12 m-auto text-center ">
+            <div class="tools ">
                
-              <div class="color-palette mt-3">
+              <div class="color-palette mt-2">
                
-            
-                <div class="color-circle bg-primary" onclick="setColor('blue')"></div>
-                <div class="color-circle bg-secondary" onclick="setColor('gray')"></div>
-                <div class="color-circle bg-success" onclick="setColor('green')"></div>
-                <div class="color-circle bg-pink-pastel" onclick="setColor('pink')"></div>
-                <div class="color-circle bg-orange" onclick="setColor('orange')"></div>
-                <div class="color-circle bg-coral-light" onclick="setColor('coral')"></div>
-                <div class="color-circle bg-danger" onclick="setColor('red')"></div>
-                <div class="color-circle bg-warning" onclick="setColor('yellow')"></div>
-                <div class="color-circle bg-info" onclick="setColor('cyan')"></div>
-                <div class="color-circle bg-light" onclick="setColor('white')"></div>
-                <div class="color-circle bg-dark" onclick="setColor('black')"></div>
-                <div class="color-circle bg-purple" onclick="setColor('purple')"></div>
-                <div class="color-circle bg-lilac" onclick="setColor('violet')"></div>
-                <div class="color-circle bg-burgundy" onclick="setColor('maroon')"></div>
-                <div class="color-circle bg-light-green" onclick="setColor('lightgreen')"></div>
-                <div class="color-circle bg-darkgreen" onclick="setColor('darkgreen')"></div>
-                <div class="color-circle bg-turquoise" onclick="setColor('turquoise')"></div>
-                <div class="color-circle bg-gold" onclick="setColor('gold')"></div>
-                <div class="color-circle bg-silver" onclick="setColor('silver')"></div>
+                <div><a href="./index.html"><img class="fw-bold" src="./imagenes/home.svg" alt="" width="38px"> </a></div>
+                <div class="color-circle bg-primary mt-1" onclick="setColor('blue')"></div>
+                <div class="color-circle bg-secondary mt-1" onclick="setColor('gray')"></div>
+                <div class="color-circle bg-success mt-1" onclick="setColor('green')"></div>
+                <div class="color-circle bg-pink-pastel mt-1" onclick="setColor('pink')"></div>
+                <div class="color-circle bg-orange mt-1" onclick="setColor('orange')"></div>
+                <div class="color-circle bg-coral-light mt-1" onclick="setColor('coral')"></div>
+                <div class="color-circle bg-danger mt-1" onclick="setColor('red')"></div>
+                <div class="color-circle bg-warning mt-1" onclick="setColor('yellow')"></div>
+                <div class="color-circle bg-info mt-1" onclick="setColor('cyan')"></div>
+                <div class="color-circle bg-ligh mt-1" onclick="setColor('white')"></div>
+                <div class="color-circle bg-dark mt-1" onclick="setColor('black')"></div>
+                <div class="color-circle bg-purple mt-1" onclick="setColor('purple')"></div>
+                <div class="color-circle bg-lilac  mt-1" onclick="setColor('violet')"></div>
+                <div class="color-circle bg-burgundy  mt-1" onclick="setColor('maroon')"></div>
+                <div class="color-circle bg-light-green  mt-1" onclick="setColor('lightgreen')"></div>
+                <div class="color-circle bg-darkgreen  mt-1" onclick="setColor('darkgreen')"></div>
+                <div class="color-circle bg-turquoise  mt-1" onclick="setColor('turquoise')"></div>
+                <div class="color-circle bg-gold  mt-1" onclick="setColor('gold')"></div>
+                <div class="color-circle bg-silver  mt-1" onclick="setColor('silver')"></div>
                         
               <button class="btn bg-blue-pastel fw-bold " onclick="setLineWidth(2)">-</button>
               <button class="btn bg-blue-pastel fw-bold " onclick="setLineWidth(12)">+</button>
@@ -242,27 +244,13 @@
         
             </div>
           </div>
-          <div class="col-md-12 text-center">
+          <div class="col-md-12 text-center mb-2">
             <canvas class="canvas-responsive m-auto" id="drawCanvas" width="1000" height="600"></canvas>
           </div>
         </div>
       </div>
       
-       
-      
-
-     
-    <footer id="footer" class="footer1 mt-4 mb-0">
-          
-        <div class=" m-auto">
-            <a class="redes1" href="#" target="_blank" ><i class="fa-brands fa-youtube"></i></a>
-            <a class="redes1" href="#" target="_blank"><i class="fa-brands fa-instagram-square"></i></a>
-            <a class="redes1" href="#"  target="_blank"><i class="fa-brands fa-facebook"></i></a>
-            <p class="derechos">Todos los derechos reservados por NLDesarrolloweb - 2024 - </p>
-    </footer>
-
-
-     
+        
     
     <script src="./index.js"></script>
     <script src="./juegos.js"></script>

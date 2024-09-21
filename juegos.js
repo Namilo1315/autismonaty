@@ -2,21 +2,20 @@ const canvas = document.getElementById('drawCanvas');
 const ctx = canvas.getContext('2d');
 let isDrawing = false;
 let color = 'black';
-let lineWidth = 2; // Definimos el grosor inicial del trazo
+let lineWidth = 2;
 
-// Ajustar para dispositivos táctiles
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight; // Cambia aquí para que ocupe toda la altura de la ventana
+    clearCanvas(); // Limpiar al redimensionar
+}
+
 function getEventPosition(e) {
-    if (e.touches) { // Si es evento táctil
-        return {
-            x: e.touches[0].clientX - canvas.getBoundingClientRect().left,
-            y: e.touches[0].clientY - canvas.getBoundingClientRect().top
-        };
-    } else { // Si es evento de mouse
-        return {
-            x: e.offsetX,
-            y: e.offsetY
-        };
-    }
+    const rect = canvas.getBoundingClientRect();
+    return {
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top
+    };
 }
 
 // Comenzar a dibujar (mouse y táctil)
@@ -34,8 +33,8 @@ function draw(e) {
     ctx.lineTo(x, y);
     ctx.strokeStyle = color;
     ctx.lineWidth = lineWidth;
-    ctx.lineJoin = 'round';  // Suavizar las uniones de líneas
-    ctx.lineCap = 'round';   // Extremos suaves de líneas
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
     ctx.stroke();
 }
 
@@ -77,15 +76,20 @@ function setLineWidth(width) {
 canvas.addEventListener('mousedown', startDrawing);
 canvas.addEventListener('mousemove', draw);
 canvas.addEventListener('mouseup', stopDrawing);
-canvas.addEventListener('mouseout', stopDrawing); // Por si el mouse sale del canvas
+canvas.addEventListener('mouseout', stopDrawing); // Si el mouse sale del canvas
 
 // Eventos táctiles
 canvas.addEventListener('touchstart', (e) => {
-    e.preventDefault(); // Evitar el comportamiento de scroll
+    e.preventDefault();
     startDrawing(e);
 });
 canvas.addEventListener('touchmove', (e) => {
-    e.preventDefault(); // Evitar el comportamiento de scroll
+    e.preventDefault();
     draw(e);
 });
 canvas.addEventListener('touchend', stopDrawing);
+
+// Ajustar canvas al cargar la página
+window.addEventListener('load', resizeCanvas);
+// Ajustar canvas al redimensionar la ventana
+window.addEventListener('resize', resizeCanvas);
