@@ -132,6 +132,8 @@
             border: 1px solid black;
             max-width: auto; /* Mantener una proporción máxima */
         }
+        
+        
         .general img.parrafos{
             margin-bottom: -10px;
         }
