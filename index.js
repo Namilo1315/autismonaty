@@ -254,6 +254,8 @@ const ids = {
         'preposiciones': ' mas preposiciones',
         'calendario': 'calendario',
         'objetos': 'objetos',
+        'enamorado': 'enamorado',
+        'asustado': 'asustado',
         
 }; 
 

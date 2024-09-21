@@ -3,11 +3,38 @@ const ctx = canvas.getContext('2d');
 let isDrawing = false;
 let color = 'black';
 let lineWidth = 2;
+let drawHistory = []; // Arreglo para almacenar el historial de trazos
 
 function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     clearCanvas(); // Limpiar al redimensionar
+}
+
+// Guardar el estado actual del canvas
+function saveState() {
+    drawHistory.push(canvas.toDataURL()); // Guardar el estado como una imagen base64
+}
+
+// Cargar el último estado del historial
+function restoreState() {
+    const img = new Image();
+    const lastState = drawHistory[drawHistory.length - 1];
+    if (lastState) {
+        img.src = lastState;
+        img.onload = function() {
+            clearCanvas();
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        };
+    }
+}
+
+// Función para deshacer el último trazo
+function undoLast() {
+    if (drawHistory.length > 0) {
+        drawHistory.pop(); // Eliminar el último estado
+        restoreState(); // Restaurar el estado anterior
+    }
 }
 
 function getEventPosition(e) {
@@ -25,6 +52,7 @@ function startDrawing(e) {
     const { x, y } = getEventPosition(e);
     ctx.beginPath();
     ctx.moveTo(x, y);
+    saveState(); // Guardar el estado del canvas antes de empezar a dibujar
 }
 
 // Continuar dibujando (mouse y táctil)
@@ -94,4 +122,3 @@ canvas.addEventListener('touchend', stopDrawing);
 window.addEventListener('load', resizeCanvas);
 // Ajustar canvas al redimensionar la ventana
 window.addEventListener('resize', resizeCanvas);
-

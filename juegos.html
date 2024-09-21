@@ -230,16 +230,20 @@
                 <div class="color-circle bg-turquoise  mt-1" onclick="setColor('turquoise')"></div>
                 <div class="color-circle bg-gold  mt-1" onclick="setColor('gold')"></div>
                 <div class="color-circle bg-silver  mt-1" onclick="setColor('silver')"></div>
-                        
-              <button class="btn bg-blue-pastel fw-bold " onclick="setLineWidth(2)">-</button>
-              <button class="btn bg-blue-pastel fw-bold " onclick="setLineWidth(12)">+</button>
-              <button class="btn btn-success" onclick="setEraser()">Borrador</button>
-              <button class="btn btn-danger " onclick="saveDrawing()">Guardar</button>
+               
+                
+                
+              <button class="btn bg-blue-pastel fw-bold " onclick="setLineWidth(12)">-</button>
+              <button class="btn bg-blue-pastel fw-bold " onclick="setLineWidth(20)">+</button>
+              <button class="btn btn-success fw-bold" onclick="setEraser()">Goma</button>
              
-             
-              <button class="btn btn-warning" onclick="clearCanvas()"> <img src="./imagenes/trash-outline.svg" alt="" width="25px"></button>
+              <button class=" btn bg-info fw-bold" onclick="undoLast()">Deshacer</button>
+              <button class="btn btn-danger fw-bold " onclick="saveDrawing()">Guardar</button>
+              <button class="btn bg-gold fw-bold" onclick="clearCanvas()"> <img src="./imagenes/trash-outline.svg" alt="" width="25px"></button>
            </div>
-            
+          
+      
+          
 
         
             </div>
