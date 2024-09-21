@@ -6,15 +6,16 @@ let lineWidth = 2;
 
 function resizeCanvas() {
     canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight; // Cambia aquí para que ocupe toda la altura de la ventana
+    canvas.height = window.innerHeight;
     clearCanvas(); // Limpiar al redimensionar
 }
 
 function getEventPosition(e) {
     const rect = canvas.getBoundingClientRect();
+    const touch = e.touches ? e.touches[0] : e; // Obtener la posición del toque o del mouse
     return {
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top
+        x: touch.clientX - rect.left,
+        y: touch.clientY - rect.top
     };
 }
 
@@ -76,7 +77,7 @@ function setLineWidth(width) {
 canvas.addEventListener('mousedown', startDrawing);
 canvas.addEventListener('mousemove', draw);
 canvas.addEventListener('mouseup', stopDrawing);
-canvas.addEventListener('mouseout', stopDrawing); // Si el mouse sale del canvas
+canvas.addEventListener('mouseout', stopDrawing);
 
 // Eventos táctiles
 canvas.addEventListener('touchstart', (e) => {
@@ -93,3 +94,4 @@ canvas.addEventListener('touchend', stopDrawing);
 window.addEventListener('load', resizeCanvas);
 // Ajustar canvas al redimensionar la ventana
 window.addEventListener('resize', resizeCanvas);
+
