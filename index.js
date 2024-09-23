@@ -213,7 +213,7 @@ const ids = {
     'poner': 'poner',
     'ir': 'ir',
     'es': 'es',
-    'estar': 'estoy',
+    'estoy': 'estoy',
     'iralbaño': 'ir al baño',
     'alimentos1': 'alimentos',
     'bebidas': 'bebidas',
@@ -256,6 +256,7 @@ const ids = {
         'objetos': 'objetos',
         'enamorado': 'enamorado',
         'asustado': 'asustado',
+        'triste': 'triste',
         
 }; 
 
