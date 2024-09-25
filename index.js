@@ -257,6 +257,7 @@ const ids = {
         'enamorado': 'enamorado',
         'asustado': 'asustado',
         'triste': 'triste',
+       
         
 }; 
 
@@ -643,11 +644,13 @@ function manejarPictogramaSeleccionado(selector, modalId) {
   manejarPictogramaSeleccionado('.emocion-pictograma', 'emocionesModal');
   manejarPictogramaSeleccionado('.numeros-pictograma', 'numerosModal');
   manejarPictogramaSeleccionado('.animales-pictograma', 'animalesModal');
+  manejarPictogramaSeleccionado('.preposiciones-pictograma', 'preposicionesModal');
   
   abrirModal('colores-link', 'colorModal');
   abrirModal('emociones-link', 'emocionesModal');
   abrirModal('numeros-link', 'numerosModal');
   abrirModal('animales-link', 'animalesModal');
+  abrirModal('preposiciones-link', 'preposicionesModal');
   
   // Puedes seguir añadiendo más categorías de pictogramas utilizando las mismas funciones
   

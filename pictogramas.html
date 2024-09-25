@@ -804,10 +804,51 @@
           <img src="./imagenes/portada/calendario.png" alt="calendario" class="pictograma  bg-light-purple" data-word="calendario" width="80" id="calendario">
           <p id="calendario" class="fw-bold text-center parrafos">CALENDARIO</p>
         </div>
-        <div class="col col-lg-1 text-center">
-          <img src="./imagenes/portada/A.png" alt="calendario" class="pictograma  bg-light-purple" data-word="preposiciones" width="80" id="preposiciones" >
-          <p id="preposicioness" class="fw-bold text-center parrafos">PREPOSICIONES</p>
+
+
+       
+
+        <div class="col col-lg-1 text-center" >
+          <a href="#" id="preposiciones-link"><img src="./imagenes/portada/A.png" alt="preposiciones" class="pictogramacarpeta bg-light-purple" data-word="preposiciones" width="80" id="preposiciones"></a>
+          <p  id="preposiciones"class="fw-bold text-center parrafos">PREPOSICONES</p>
         </div>
+         <!-- Modal para selección de preposciones --> 
+        <div class="modal fade" id="preposicionesModal" tabindex="-" aria-labelledby="preposicionesModalLabel" aria-hidden="true">
+         <div class="modal-dialog">
+           <div class="modal-content">
+             <div class="modal-header">
+               <h5 class="modal-title fw-bold" id="preposicionesModalLabel">SELECCIONA UN CONECTOR</h5>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+             </div>
+             <div class="modal-body">
+               <!-- Pictogramas de preposiciones-->
+               <div class="row">
+                <div class="col text-center">
+                  <H1><button class="pictograma border " data-word="A" width="80" >A</button></H1>  
+                </div>
+                <div class="col text-center">
+                    <H1><button class="pictograma border " data-word="DE" width="80" >DE</button></H1>  
+                  </div>
+                  <div class="col text-center">
+                    <H1><button class="pictograma border" data-word="CON" width="80" >CON</button></H1>  
+                  </div>
+                  <div class="col text-center">
+                    <H1><button  class="pictograma border" data-word="LA" width="80" >LA</button></H1>  
+                  </div>
+                  <div class="col text-center">
+                    <H1><button  class="pictograma border" data-word="Y" width="80" >Y</button></H1>  
+                  </div>
+                  <div class="col text-center">
+                    <H1><button class="pictograma border" data-word="LOS" width="80" >LOS</button></H1>  
+                  </div>
+                  <div class="col text-center">
+                    <H1><button  class="pictograma border " data-word="ME" width="80" >ME</button></H1>  
+                  </div>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
         </div>
     </div>
 
