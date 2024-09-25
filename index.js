@@ -592,161 +592,63 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// Manejo de selección de pictogramas de colores y agregarlos al contenedor de frases
-document.querySelectorAll('.color-pictograma').forEach(function(pictograma) {
-  pictograma.addEventListener('click', function() {
-    // Obtener la palabra del pictograma seleccionado
-    var word = pictograma.getAttribute('data-word');
-    
-    // Crear un nuevo elemento para agregar la imagen al contenedor de frases
-    var newPictogram = document.createElement('div');
-    newPictogram.classList.add('pictograma-selected');
-    
-    // Crear un nuevo elemento de imagen
-    var imgElement = document.createElement('img');
-    imgElement.src = pictograma.src;
-    imgElement.alt = pictograma.alt;
-    imgElement.width = 80; // Mantener el mismo tamaño
-    
-    // Agregar la imagen al nuevo elemento
-    newPictogram.appendChild(imgElement);
-    
-    // Agregar el nuevo pictograma (imagen) al contenedor de frases
-    document.getElementById('phrase-container').appendChild(newPictogram);
-    
-    // Reproducir el nombre del color seleccionado usando SpeechSynthesis
-    var utterance = new SpeechSynthesisUtterance(word);
-    speechSynthesis.speak(utterance);
-    
-    // Cerrar el modal
-    var modal = bootstrap.Modal.getInstance(document.getElementById('colorModal'));
-    modal.hide();
-  });
-});
 
-// Abrir modal de colores cuando se hace clic en la imagen de "Colores"
-document.getElementById('colores-link').addEventListener('click', function(event) {
-  event.preventDefault(); // Evitar comportamiento predeterminado del enlace
-  var colorModal = new bootstrap.Modal(document.getElementById('colorModal'));
-  colorModal.show(); // Mostrar el modal de colores
-});
-   
 
-// Manejo de selección de pictogramas de emociones y agregarlos al contenedor de frases
-document.querySelectorAll('.emocion-pictograma').forEach(function(pictograma) {
-    pictograma.addEventListener('click', function() {
-      // Obtener la palabra del pictograma seleccionado
-      var word = pictograma.getAttribute('data-word');
-      
-      // Crear un nuevo elemento para agregar la imagen al contenedor de frases
-      var newPictogram = document.createElement('div');
-      newPictogram.classList.add('pictograma-selected');
-      
-      // Crear un nuevo elemento de imagen
-      var imgElement = document.createElement('img');
-      imgElement.src = pictograma.src;
-      imgElement.alt = pictograma.alt;
-      imgElement.width = 80; // Mantener el mismo tamaño
-      
-      // Agregar la imagen al nuevo elemento
-      newPictogram.appendChild(imgElement);
-      
-      // Agregar el nuevo pictograma (imagen) al contenedor de frases
-      document.getElementById('phrase-container').appendChild(newPictogram);
-      
-      // Reproducir el nombre de la emoción seleccionada usando SpeechSynthesis
-      var utterance = new SpeechSynthesisUtterance(word);
-      speechSynthesis.speak(utterance);
-      
-      // Cerrar el modal
-      var modal = bootstrap.Modal.getInstance(document.getElementById('emocionesModal'));
-      modal.hide();
+
+// Función para manejar la selección de pictogramas y agregarlos al contenedor de frases
+function manejarPictogramaSeleccionado(selector, modalId) {
+    document.querySelectorAll(selector).forEach(function(pictograma) {
+      pictograma.addEventListener('click', function() {
+        // Obtener la palabra del pictograma seleccionado
+        var word = pictograma.getAttribute('data-word');
+        
+        // Crear un nuevo elemento para agregar la imagen al contenedor de frases
+        var newPictogram = document.createElement('div');
+        newPictogram.classList.add('pictograma-selected');
+        
+        // Crear un nuevo elemento de imagen
+        var imgElement = document.createElement('img');
+        imgElement.src = pictograma.src;
+        imgElement.alt = pictograma.alt;
+        imgElement.width = 80; // Mantener el mismo tamaño
+        
+        // Agregar la imagen al nuevo elemento
+        newPictogram.appendChild(imgElement);
+        
+        // Agregar el nuevo pictograma (imagen) al contenedor de frases
+        document.getElementById('phrase-container').appendChild(newPictogram);
+        
+        // Reproducir el nombre seleccionado usando SpeechSynthesis
+        var utterance = new SpeechSynthesisUtterance(word);
+        speechSynthesis.speak(utterance);
+        
+        // Cerrar el modal
+        var modal = bootstrap.Modal.getInstance(document.getElementById(modalId));
+        modal.hide();
+      });
     });
-  });
+  }
   
-  // Abrir modal de emociones cuando se hace clic en la imagen de "Emociones"
-  document.getElementById('emociones-link').addEventListener('click', function(event) {
-    event.preventDefault(); // Evitar comportamiento predeterminado del enlace
-    var emocionesModal = new bootstrap.Modal(document.getElementById('emocionesModal'));
-    emocionesModal.show(); // Mostrar el modal de emociones
-  });
- 
-// Manejo de selección de pictogramas de numeros y agregarlos al contenedor de frases
-document.querySelectorAll('.numeros-pictograma').forEach(function(pictograma) {
-    pictograma.addEventListener('click', function() {
-      // Obtener la palabra del pictograma seleccionado
-      var word = pictograma.getAttribute('data-word');
-      
-      // Crear un nuevo elemento para agregar la imagen al contenedor de frases
-      var newPictogram = document.createElement('div');
-      newPictogram.classList.add('pictograma-selected');
-      
-      // Crear un nuevo elemento de imagen
-      var imgElement = document.createElement('img');
-      imgElement.src = pictograma.src;
-      imgElement.alt = pictograma.alt;
-      imgElement.width = 80; // Mantener el mismo tamaño
-      
-      // Agregar la imagen al nuevo elemento
-      newPictogram.appendChild(imgElement);
-      
-      // Agregar el nuevo pictograma (imagen) al contenedor de frases
-      document.getElementById('phrase-container').appendChild(newPictogram);
-      
-      // Reproducir el nombre de la emoción seleccionada usando SpeechSynthesis
-      var utterance = new SpeechSynthesisUtterance(word);
-      speechSynthesis.speak(utterance);
-      
-      // Cerrar el modal
-      var modal = bootstrap.Modal.getInstance(document.getElementById('numerosModal'));
-      modal.hide();
+  // Función para abrir el modal cuando se hace clic en la categoría
+  function abrirModal(linkId, modalId) {
+    document.getElementById(linkId).addEventListener('click', function(event) {
+      event.preventDefault(); // Evitar comportamiento predeterminado del enlace
+      var modal = new bootstrap.Modal(document.getElementById(modalId));
+      modal.show(); // Mostrar el modal correspondiente
     });
-  });
+  }
   
-  // Abrir modal de emociones cuando se hace clic en la imagen de "Emociones"
-  document.getElementById('numeros-link').addEventListener('click', function(event) {
-    event.preventDefault(); // Evitar comportamiento predeterminado del enlace
-    var numerosModal = new bootstrap.Modal(document.getElementById('numerosModal'));
-    numerosModal.show(); // Mostrar el modal de emociones
-  });
-
-
-  // Manejo de selección de pictogramas de animales y agregarlos al contenedor de frases
-document.querySelectorAll('.animales-pictograma').forEach(function(pictograma) {
-    pictograma.addEventListener('click', function() {
-      // Obtener la palabra del pictograma seleccionado
-      var word = pictograma.getAttribute('data-word');
-      
-      // Crear un nuevo elemento para agregar la imagen al contenedor de frases
-      var newPictogram = document.createElement('div');
-      newPictogram.classList.add('pictograma-selected');
-      
-      // Crear un nuevo elemento de imagen
-      var imgElement = document.createElement('img');
-      imgElement.src = pictograma.src;
-      imgElement.alt = pictograma.alt;
-      imgElement.width = 80; // Mantener el mismo tamaño
-      
-      // Agregar la imagen al nuevo elemento
-      newPictogram.appendChild(imgElement);
-      
-      // Agregar el nuevo pictograma (imagen) al contenedor de frases
-      document.getElementById('phrase-container').appendChild(newPictogram);
-      
-      // Reproducir el nombre de la emoción seleccionada usando SpeechSynthesis
-      var utterance = new SpeechSynthesisUtterance(word);
-      speechSynthesis.speak(utterance);
-      
-      // Cerrar el modal
-      var modal = bootstrap.Modal.getInstance(document.getElementById('animalesModal'));
-      modal.hide();
-    });
-  });
+  // Llamadas a las funciones para cada categoría
+  manejarPictogramaSeleccionado('.color-pictograma', 'colorModal');
+  manejarPictogramaSeleccionado('.emocion-pictograma', 'emocionesModal');
+  manejarPictogramaSeleccionado('.numeros-pictograma', 'numerosModal');
+  manejarPictogramaSeleccionado('.animales-pictograma', 'animalesModal');
   
-  // Abrir modal de emociones cuando se hace clic en la imagen de "animales"
-  document.getElementById('animales-link').addEventListener('click', function(event) {
-    event.preventDefault(); // Evitar comportamiento predeterminado del enlace
-    var animalesModal = new bootstrap.Modal(document.getElementById('animalesModal'));
-    animalesModal.show(); // Mostrar el modal de ANIMALES
-  });
+  abrirModal('colores-link', 'colorModal');
+  abrirModal('emociones-link', 'emocionesModal');
+  abrirModal('numeros-link', 'numerosModal');
+  abrirModal('animales-link', 'animalesModal');
+  
+  // Puedes seguir añadiendo más categorías de pictogramas utilizando las mismas funciones
+  
  
