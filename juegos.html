@@ -172,29 +172,33 @@
 /* Ajuste para pantallas muy pequeñas */
 @media (max-width: 576px) {
     .canvas-responsive {
-        width: 100% !important;
-        height: 80hv;
+        width: 88% !important;
+      }
 
-    }
+    
 
     /* Botones aún más pequeños */
     .btn {
-        font-size: 10px;
+        font-size: 13px;
         padding: 3px 6px;
     }
 
     .color-circle {
-        width: 25px;
-        height: 25px;
+        width: 20px;
+        height: 20px;
     }
-
+    .img1{
+        width: 30px;
+    
+    }
     /* Footer siempre al fondo */
     footer {
         position: relative;
         bottom: 0;
         width: 100%;
     }
-}
+
+ }
 
 
     </style>
@@ -210,7 +214,7 @@
                
               <div class="color-palette mt-2">
                
-                <div><a href="./index.html"><img class="fw-bold" src="./imagenes/home.svg" alt="" width="38px"> </a></div>
+                <div><a href="./index.html"><img class="fw-bold img1 bg-yellow-light" src="./imagenes/home.svg" alt="" width="38px"> </a></div>
                 <div class="color-circle bg-primary mt-1" onclick="setColor('blue')"></div>
                 <div class="color-circle bg-secondary mt-1" onclick="setColor('gray')"></div>
                 <div class="color-circle bg-success mt-1" onclick="setColor('green')"></div>

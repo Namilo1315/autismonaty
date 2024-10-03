@@ -125,7 +125,7 @@
             <p id="tu" class="fw-bold text-center parrafos">TÚ</p>
           </div>
           <div class="col  col-lg-1 text-center">
-            <img src="./imagenes/portada/él.png" alt="él" class="pictograma bg-light-green" data-word="él" width="80" id="el">
+            <img src="./imagenes/portada/el.png" alt="él" class="pictograma bg-light-green" data-word="él" width="80" id="el">
             <p  id="el" class="fw-bold text-center parrafos">ÉL</p>
           </div>
           <div class="col col-lg-1 text-center">
@@ -739,10 +739,88 @@
       <img src="./imagenes/portada/casa.png" alt="casa" class="pictograma  bg-light-purple" data-word="casa" width="80" id="casa" >
       <p id="casa" class="fw-bold text-center parrafos">CASA</p>
     </div>
-    <div class="col col-lg-1 text-center">
-      <img src="./imagenes/portada/frutas.png" alt="calendario" class="pictograma  bg-light-purple" data-word="frutas" width="80" id="frutas">
-      <p id="frutass" class="fw-bold text-center parrafos">FRUTAS</p>
+
+    
+
+    <!-- Categoría: Emociones -->
+    <div class="col col-lg-1 text-center" >
+      <a href="#" id="frutas-link"><img src="./imagenes/portada/frutas.png" alt="frutas" class="pictogramacarpeta bg-light-purple " data-word="frutas" width="80" id="frutas"></a>
+      <p  id="frutas"class="fw-bold text-center parrafos">FRUTAS</p>
     </div>
+    
+    <!-- Modal para selección de frutas --> 
+    <div class="modal fade" id="frutasModal" tabindex="-" aria-labelledby="frutasModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold text-center" id="frutasModalLabel">Seleccioná una Fruta</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <!-- Pictogramas de frutas -->
+            <div class="row ">
+             
+                <div class="col  text-center">
+                  <img src="./imagenes/frutas/manzana.png" alt="manzana" class="pictograma border bg-light-purple " data-word="manzana" width="80" id="manzana">
+                  <p id="" class="fw-bold text-center parrafos">MANZANA</p>
+              </div>
+              <div class="col text-center">
+                <img src="./imagenes/frutas/naranja.png" alt="naranja" class="pictograma border bg-light-purple" data-word="naranja" width="80" id="naranja">
+                <p class="fw-bold text-center parrafos">NARANJA</p>
+            </div>
+            <div class="col text-center">
+                <img src="./imagenes/frutas/banana.png" alt="banana" class="pictograma border bg-light-purple" data-word="banana" width="80" id="banana">
+                <p class="fw-bold text-center parrafos">BANANA</p>
+            </div>
+            <div class="col text-center">
+                <img src="./imagenes/frutas/frutilla.png" alt="frutilla" class="pictograma border bg-light-purple" data-word="frutilla" width="80" id="frutilla">
+                <p class="fw-bold text-center parrafos">FRUTILLA</p>
+            </div>
+            <div class="col text-center">
+                <img src="./imagenes/frutas/mandarina.png" alt="mandarina" class="pictograma border bg-light-purple" data-word="mandarina" width="80" id="mandarina">
+                <p class="fw-bold text-center parrafos">MANDARINA</p>
+            </div>
+            <div class="col text-center">
+                <img src="./imagenes/frutas/pera.png" alt="pera" class="pictograma border bg-light-purple" data-word="pera" width="80" id="pera">
+                <p class="fw-bold text-center parrafos">PERA</p>
+            </div>
+            <div class="col text-center">
+                <img src="./imagenes/frutas/cereza.png" alt="cereza" class="pictograma border bg-light-purple" data-word="cereza" width="80" id="cereza">
+                <p class="fw-bold text-center parrafos">CEREZA</p>
+            </div>
+            <div class="col text-center">
+                <img src="./imagenes/frutas/melon.png" alt="melon" class="pictograma border bg-light-purple" data-word="melón" width="80" id="melon">
+                <p class="fw-bold text-center parrafos">MELÓN</p>
+            </div>
+            <div class="col text-center">
+                <img src="./imagenes/frutas/durazno.png" alt="durazno" class="pictograma border bg-light-purple" data-word="durazno" width="80" id="durazno">
+                <p class="fw-bold text-center parrafos">DURAZNO</p>
+            </div>
+            <div class="col text-center">
+                <img src="./imagenes/frutas/sandia.png" alt="sandia" class="pictograma border bg-light-purple" data-word="sandía" width="80" id="sandia">
+                <p class="fw-bold text-center parrafos">SANDÍA</p>
+            </div>
+            <div class="col text-center">
+                <img src="./imagenes/frutas/piña.png" alt="piña" class="pictograma border bg-light-purple" data-word="piña" width="80" id="pina">
+                <p class="fw-bold text-center parrafos">PIÑA</p>
+            </div>
+            <div class="col text-center">
+                <img src="./imagenes/frutas/uvas.png" alt="uvas" class="pictograma border bg-light-purple" data-word="uvas" width="80" id="uvas">
+                <p class="fw-bold text-center parrafos">UVAS</p>
+            </div>
+            
+     
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+
+
+
     <div class="col col-lg-1 text-center">
       <img src="./imagenes/portada/ropa.png" alt="calendario" class="pictograma  bg-light-purple" data-word="calendario" width="80" id="ropa">
       <p id="ropas" class="fw-bold text-center parrafos">ROPA</p>
@@ -844,6 +922,13 @@
                   <div class="col text-center">
                     <H1><button  class="pictograma border " data-word="ME" width="80" >ME</button></H1>  
                   </div>
+                  <div class="col text-center">
+                    <H1><button  class="pictograma border " data-word="ELLA" width="80" >ELLA</button></H1>  
+                  </div>
+                  <div class="col text-center">
+                    <H1><button  class="pictograma border " data-word="GRAN" width="80" >GRAN</button></H1>  
+                  </div>
+                
                </div>
              </div>
            </div>

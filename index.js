@@ -645,12 +645,15 @@ function manejarPictogramaSeleccionado(selector, modalId) {
   manejarPictogramaSeleccionado('.numeros-pictograma', 'numerosModal');
   manejarPictogramaSeleccionado('.animales-pictograma', 'animalesModal');
   manejarPictogramaSeleccionado('.preposiciones-pictograma', 'preposicionesModal');
+  manejarPictogramaSeleccionado('.preposiciones-pictograma', 'preposicionesModal');
+  manejarPictogramaSeleccionado('.frutas-pictograma', 'frutasModal');
   
   abrirModal('colores-link', 'colorModal');
   abrirModal('emociones-link', 'emocionesModal');
   abrirModal('numeros-link', 'numerosModal');
   abrirModal('animales-link', 'animalesModal');
   abrirModal('preposiciones-link', 'preposicionesModal');
+  abrirModal('frutas-link', 'frutasModal');
   
   // Puedes seguir añadiendo más categorías de pictogramas utilizando las mismas funciones
   
