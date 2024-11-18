@@ -1,11 +1,12 @@
 <html><head><base href="./" />
-    <html lang="en">
+    <html lang="pt">
     <head>    
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Pictogram - Learning Pictograms</title>
+        <title>Pictograma - Aprendendo Pictogramas</title>
         <link rel="icon" type="image/jpg" href="./imagenes/caragrande.png"/>
        
+        <link rel="apple-touch-icon" sizes="180x180" href="./images/bigface.png">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <style>
             .pictogram, .section-title {
@@ -16,8 +17,8 @@
                 transform: scale(1.1);
             }
             .pictogram-container {
-                margin-bottom: -20px;
-                padding: 0px; /* Added padding for better spacing */
+                margin-bottom: 20px;
+                padding: 10px; /* Added padding for better spacing */
             }
             .btn-return { background-color: #ff2534; color: #000; }
             .bg-yellow-light { background-color: #f7eb65; color: #000; }
@@ -78,22 +79,6 @@
                     flex: 0 1 auto;
                     width: auto;
                 }
-                .header-robot {
-            position: absolute;
-            right: 250px;
-            top: 30;
-            transform: translateY(-40%);
-            width: 100px;
-            height: 90px;
-            z-index: 1000;
-            animation: peekRobot 3s ease-in-out infinite;
-        }
-
-        @keyframes peekRobot {
-            0% { transform: translateY(-40%); }
-            50% { transform: translateY(-30%); }
-            100% { transform: translateY(-40%); }
-        }
             }
     
             /* For mobile only - 2 buttons per row */
@@ -116,9 +101,6 @@
                 .section-button {
                     font-size: 12px;
                     padding: 6px 8px;
-                }
-                .header-robot {
-                   display: none;
                 }
             }
             
@@ -206,10 +188,7 @@
                 50% { transform: scale(1.2); opacity: 1; }
             }
             .container-fluid {
-                padding-bottom: 0px; /* Add space for fixed nav */
-                margin-top: -10;
-                border-radius: 0%;
-            
+                padding-bottom: 80px; /* Add space for fixed nav */
             }
     
             /* Add this to ensure text is uppercase */
@@ -277,360 +256,329 @@
             .idioma{
             text-decoration: none;
             }
-              /* Add to existing styles */
-        .header-robot {
-            position: absolute;
-            right: 250px;
-            top: 30;
-            transform: translateY(-40%);
-            width: 100px;
-            height: 90px;
-            z-index: 1000;
-            animation: peekRobot 3s ease-in-out infinite;
-        }
-
-        @keyframes peekRobot {
-            0% { transform: translateY(-40%); }
-            50% { transform: translateY(-30%); }
-            100% { transform: translateY(-40%); }
-        }
         </style>
     </head>
     <body>
-        <div class="container-fluid ">
+        <div class="container-fluid mt-3">
             <div class="language-selector">
                 <button class="language-btn" onclick="toggleLanguageMenu()">
-                    <span id="currentLanguage">English</span> 🌐
+                    <span id="currentLanguage">Português</span> 🌐
                 </button>
                 <div class="language-menu" id="languageMenu">
-                   <a class="idioma" href="./ingles.html"> <button onclick="changeLanguage('en')">English</button></a> 
-                    <a  class="idioma" href="./portugues.html"> <button onclick="changeLanguage('pt')">Português</button></a>
-                    <a  class="idioma" href="./frances.html"><button onclick="changeLanguage('fr')">Français</button>
-                    </div></a>
+                    <a  class="idioma" href="./ingles.html"><button onclick="changeLanguage('en')">English</button></a>
+                    <button onclick="changeLanguage('pt')">Português</button>
+                   <a  class="idioma" href="./frances.html"><button onclick="changeLanguage('fr')">Français</button> </a> 
+                </div>
             </div>
             <h3 class="text-center mb-4 fw-bold">
                 <div class="d-flex align-items-center justify-content-center">
                     <a class="home-link" href="./index.html"> 
-                        <img class="fw-bold" src="./imagenes/home.svg" alt="" width="50px" > 
+                        <img class="fw-bold" src="./imagenes/home.svg" alt="" width="50px"> 
                     </a>
-                    <span class="pictogram" data-word="Learning Pictograms. Let's learn together!">
-                        Learning Pictograms<br>
-                        <span style="font-size: 0.8em; color: #666;">Let's learn together!</span>
+                    <span class="pictogram" data-word="Aprendendo Pictogramas. Vamos aprender juntos!">
+                        Aprendendo Pictogramas<br>
+                        <span style="font-size: 0.8em; color: #666;">Vamos aprender juntos!</span>
                     </span>
                 </div>
-                <svg class="header-robot" viewBox="0 0 100 100">
-                    <!-- Robot Head -->
-                    <rect x="20" y="20" width="60" height="50" rx="10" fill="#f7eb65" stroke="#333" stroke-width="3"/>
-                    <!-- Robot Eyes -->
-                    <circle cx="40" cy="40" r="8" fill="#fff" stroke="#333" stroke-width="2"/>
-                    <circle cx="60" cy="40" r="8" fill="#fff" stroke="#333" stroke-width="2"/>
-                    <circle cx="40" cy="40" r="4" fill="#333"/>  
-                    <circle cx="60" cy="40" r="4" fill="#333"/>
-                    <!-- Robot Antenna -->
-                    <line x1="50" y1="20" x2="50" y2="10" stroke="#333" stroke-width="3"/>
-                    <circle cx="50" cy="8" r="4" fill="#ff2534"/>
-                    <!-- Robot Mouth -->
-                    <path d="M35 55 Q50 65 65 55" fill="none" stroke="#333" stroke-width="3"/>
-                </svg>
             </h3>
     
             <!-- Navigation buttons moved here -->
             <div class="nav-buttons">
                 <div class="container text-center">
-                    <button class="section-button active" data-section="numbers">NUMBERS</button>
-                    <button class="section-button" data-section="animals">ANIMALS</button>
-                    <button class="section-button" data-section="colors">COLORS</button>
-                    <button class="section-button" data-section="objects">OBJECTS</button>
-                    <button class="section-button" data-section="greetings">GREETINGS</button>
-                    <button class="section-button" data-section="emotions">EMOTIONS</button>
+                    <button class="section-button active" data-section="numbers">NÚMEROS</button>
+                    <button class="section-button" data-section="animals">ANIMAIS</button>
+                    <button class="section-button" data-section="colors">CORES</button>
+                    <button class="section-button" data-section="objects">OBJETOS</button>
+                    <button class="section-button" data-section="greetings">SAUDAÇÕES</button>
+                    <button class="section-button" data-section="emotions">EMOÇÕES</button>
                 </div>
             </div>
     
             <!-- Content sections follow -->
             <div id="numbers" class="content-section active">
-                <h4 class="section-title text-center" data-word="Numbers">NUMBERS</h4>
+                <h4 class="section-title text-center" data-word="Números">NÚMEROS</h4>
                 <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-4">
                     <div class="col text-center pictogram-container">
-                        <img src="./imagenes/numeros/1.png" alt="Number one" class="pictogram border" data-word="one" width="120">
-                        <p class="fw-bold">ONE</p>
+                        <img src="./imagenes/numeros/1.png" alt="Número um" class="pictogram border" data-word="um" width="120">
+                        <p class="fw-bold">UM</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./imagenes/numeros/2.png" alt="Number two" class="pictogram border" data-word="two" width="120">
-                        <p class="fw-bold">TWO</p>
+                        <img src="./imagenes/numeros/2.png" alt="Número dois" class="pictogram border" data-word="dois" width="120">
+                        <p class="fw-bold">DOIS</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./imagenes/numeros/3.png" alt="Number three" class="pictogram border" data-word="three" width="120">
-                        <p class="fw-bold">THREE</p>
+                        <img src="./imagenes/numeros/3.png" alt="Número três" class="pictogram border" data-word="três" width="120">
+                        <p class="fw-bold">TRÊS</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./imagenes/numeros/4.png" alt="Number four" class="pictogram border" data-word="four" width="120">
-                        <p class="fw-bold">FOUR</p>
+                        <img src="./imagenes/numeros/4.png" alt="Número quatro" class="pictogram border" data-word="quatro" width="120">
+                        <p class="fw-bold">QUATRO</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./imagenes/numeros/5.png" alt="Number five" class="pictogram border" data-word="five" width="120">
-                        <p class="fw-bold">FIVE</p>
+                        <img src="./imagenes/numeros/5.png" alt="Número cinco" class="pictogram border" data-word="cinco" width="120">
+                        <p class="fw-bold">CINCO</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./imagenes/numeros/6.png" alt="Number six" class="pictogram border" data-word="six" width="120">
-                        <p class="fw-bold">SIX</p>
+                        <img src="./imagenes/numeros/6.png" alt="Número seis" class="pictogram border" data-word="seis" width="120">
+                        <p class="fw-bold">SEIS</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./imagenes/numeros/7.png" alt="Number seven" class="pictogram border" data-word="seven" width="120">
-                        <p class="fw-bold">SEVEN</p>
+                        <img src="./imagenes/numeros/7.png" alt="Número sete" class="pictogram border" data-word="sete" width="120">
+                        <p class="fw-bold">SETE</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./imagenes/numeros/8.png" alt="Number eight" class="pictogram border" data-word="eight" width="120">
-                        <p class="fw-bold">EIGHT</p>
+                        <img src="./imagenes/numeros/8.png" alt="Número oito" class="pictogram border" data-word="oito" width="120">
+                        <p class="fw-bold">OITO</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./imagenes/numeros/9.png" alt="Number nine" class="pictogram border" data-word="nine" width="120">
-                        <p class="fw-bold">NINE</p>
+                        <img src="./imagenes/numeros/9.png" alt="Número nove" class="pictogram border" data-word="nove" width="120">
+                        <p class="fw-bold">NOVE</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./imagenes/numeros/10.png" alt="Number ten" class="pictogram border" data-word="ten" width="120">
-                        <p class="fw-bold">TEN</p>
+                        <img src="./imagenes/numeros/10.png" alt="Número dez" class="pictogram border" data-word="dez" width="120">
+                        <p class="fw-bold">DEZ</p>
                     </div>
                 </div>
             </div>
     
             <!-- Animals Section -->
             <div id="animals" class="content-section">
-                <h4 class="section-title text-center" data-word="Animals">ANIMALS</h4>
+                <h4 class="section-title text-center" data-word="Animais">ANIMAIS</h4>
                 <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-4">
                     <div class="col text-center pictogram-container">
-                        <img src="./images/animals/dog.png" alt="Dog animal" class="pictogram border" data-word="dog" width="80">
-                        <p class="fw-bold">DOG</p>
+                        <img src="./images/animals/dog.png" alt="Cachorro" class="pictogram border" data-word="cachorro" width="80">
+                        <p class="fw-bold">CACHORRO</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/animals/cat.png" alt="Cat animal" class="pictogram border" data-word="cat" width="80">
-                        <p class="fw-bold">CAT</p>
+                        <img src="./images/animals/cat.png" alt="Gato" class="pictogram border" data-word="gato" width="80">
+                        <p class="fw-bold">GATO</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/animals/bird.png" alt="Bird animal" class="pictogram border" data-word="bird" width="80">
-                        <p class="fw-bold">BIRD</p>
+                        <img src="./images/animals/bird.png" alt="Pássaro" class="pictogram border" data-word="pássaro" width="80">
+                        <p class="fw-bold">PÁSSARO</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/animals/fish.png" alt="Fish animal" class="pictogram border" data-word="fish" width="80">
-                        <p class="fw-bold">FISH</p>
+                        <img src="./images/animals/fish.png" alt="Peixe" class="pictogram border" data-word="peixe" width="80">
+                        <p class="fw-bold">PEIXE</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/animals/rabbit.png" alt="Rabbit animal" class="pictogram border" data-word="rabbit" width="80">
-                        <p class="fw-bold">RABBIT</p>
+                        <img src="./images/animals/rabbit.png" alt="Coelho" class="pictogram border" data-word="coelho" width="80">
+                        <p class="fw-bold">COELHO</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/animals/horse.png" alt="Horse animal" class="pictogram border" data-word="horse" width="80">
-                        <p class="fw-bold">HORSE</p>
+                        <img src="./images/animals/horse.png" alt="Cavalo" class="pictogram border" data-word="cavalo" width="80">
+                        <p class="fw-bold">CAVALO</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/animals/elephant.png" alt="Elephant animal" class="pictogram border" data-word="elephant" width="80">
-                        <p class="fw-bold">ELEPHANT</p>
+                        <img src="./images/animals/elephant.png" alt="Elefante" class="pictogram border" data-word="elefante" width="80">
+                        <p class="fw-bold">ELEFANTE</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/animals/lion.png" alt="Lion animal" class="pictogram border" data-word="lion" width="80">
-                        <p class="fw-bold">LION</p>
+                        <img src="./images/animals/lion.png" alt="Leão" class="pictogram border" data-word="leão" width="80">
+                        <p class="fw-bold">LEÃO</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/animals/monkey.png" alt="Monkey animal" class="pictogram border" data-word="monkey" width="80">
-                        <p class="fw-bold">MONKEY</p>
+                        <img src="./images/animals/monkey.png" alt="Macaco" class="pictogram border" data-word="macaco" width="80">
+                        <p class="fw-bold">MACACO</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/animals/giraffe.png" alt="Giraffe animal" class="pictogram border" data-word="giraffe" width="80">
-                        <p class="fw-bold">GIRAFFE</p>
+                        <img src="./images/animals/giraffe.png" alt="Girafa" class="pictogram border" data-word="girafa" width="80">
+                        <p class="fw-bold">GIRAFA</p>
                     </div>
                 </div>
             </div>
     
             <!-- Colors Section -->
             <div id="colors" class="content-section">
-                <h4 class="section-title text-center" data-word="Colors">COLORS</h4>
+                <h4 class="section-title text-center" data-word="Cores">CORES</h4>
                 <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-4">
                     <div class="col text-center pictogram-container">
-                        <img src="./images/colors/red.png" alt="Red color" class="pictogram border" data-word="red" width="80">
-                        <p class="fw-bold">RED</p>
+                        <img src="./images/colors/red.png" alt="Vermelho" class="pictogram border" data-word="vermelho" width="80">
+                        <p class="fw-bold">VERMELHO</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/colors/blue.png" alt="Blue color" class="pictogram border" data-word="blue" width="80">
-                        <p class="fw-bold">BLUE</p>
+                        <img src="./images/colors/blue.png" alt="Azul" class="pictogram border" data-word="azul" width="80">
+                        <p class="fw-bold">AZUL</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/colors/yellow.png" alt="Yellow color" class="pictogram border" data-word="yellow" width="80">
-                        <p class="fw-bold">YELLOW</p>
+                        <img src="./images/colors/yellow.png" alt="Amarelo" class="pictogram border" data-word="amarelo" width="80">
+                        <p class="fw-bold">AMARELO</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/colors/green.png" alt="Green color" class="pictogram border" data-word="green" width="80">
-                        <p class="fw-bold">GREEN</p>
+                        <img src="./images/colors/green.png" alt="Verde" class="pictogram border" data-word="verde" width="80">
+                        <p class="fw-bold">VERDE</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/colors/purple.png" alt="Purple color" class="pictogram border" data-word="purple" width="80">
-                        <p class="fw-bold">PURPLE</p>
+                        <img src="./images/colors/purple.png" alt="Roxo" class="pictogram border" data-word="roxo" width="80">
+                        <p class="fw-bold">ROXO</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/colors/orange.png" alt="Orange color" class="pictogram border" data-word="orange" width="80">
-                        <p class="fw-bold">ORANGE</p>
+                        <img src="./images/colors/orange.png" alt="Laranja" class="pictogram border" data-word="laranja" width="80">
+                        <p class="fw-bold">LARANJA</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/colors/pink.png" alt="Pink color" class="pictogram border" data-word="pink" width="80">
-                        <p class="fw-bold">PINK</p>
+                        <img src="./images/colors/pink.png" alt="Rosa" class="pictogram border" data-word="rosa" width="80">
+                        <p class="fw-bold">ROSA</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/colors/brown.png" alt="Brown color" class="pictogram border" data-word="brown" width="80">
-                        <p class="fw-bold">BROWN</p>
+                        <img src="./images/colors/brown.png" alt="Marrom" class="pictogram border" data-word="marrom" width="80">
+                        <p class="fw-bold">MARROM</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/colors/black.png" alt="Black color" class="pictogram border" data-word="black" width="80">
-                        <p class="fw-bold">BLACK</p>
+                        <img src="./images/colors/black.png" alt="Preto" class="pictogram border" data-word="preto" width="80">
+                        <p class="fw-bold">PRETO</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/colors/white.png" alt="White color" class="pictogram border" data-word="white" width="80">
-                        <p class="fw-bold">WHITE</p>
+                        <img src="./images/colors/white.png" alt="Branco" class="pictogram border" data-word="branco" width="80">
+                        <p class="fw-bold">BRANCO</p>
                     </div>
                 </div>
             </div>
     
             <!-- Objects and Toys Section -->
             <div id="objects" class="content-section">
-                <h4 class="section-title text-center" data-word="Objects and Toys">OBJECTS AND TOYS</h4>
+                <h4 class="section-title text-center" data-word="Objetos e Brinquedos">OBJETOS E BRINQUEDOS</h4>
                 <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-4">
                     <div class="col text-center pictogram-container">
-                        <img src="./images/objects/ball.png" alt="Ball toy" class="pictogram border" data-word="ball" width="80">
-                        <p class="fw-bold">BALL</p>
+                        <img src="./images/objects/ball.png" alt="Bola" class="pictogram border" data-word="bola" width="80">
+                        <p class="fw-bold">BOLA</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/objects/car.png" alt="Car toy" class="pictogram border" data-word="car" width="80">
-                        <p class="fw-bold">CAR</p>
+                        <img src="./images/objects/car.png" alt="Carro" class="pictogram border" data-word="carro" width="80">
+                        <p class="fw-bold">CARRO</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/objects/doll.png" alt="Doll toy" class="pictogram border" data-word="doll" width="80">
-                        <p class="fw-bold">DOLL</p>
+                        <img src="./images/objects/doll.png" alt="Boneca" class="pictogram border" data-word="boneca" width="80">
+                        <p class="fw-bold">BONECA</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/objects/book.png" alt="Book object" class="pictogram border" data-word="book" width="80">
-                        <p class="fw-bold">BOOK</p>
+                        <img src="./images/objects/book.png" alt="Livro" class="pictogram border" data-word="livro" width="80">
+                        <p class="fw-bold">LIVRO</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/objects/pencil.png" alt="Pencil object" class="pictogram border" data-word="pencil" width="80">
-                        <p class="fw-bold">PENCIL</p>
+                        <img src="./images/objects/pencil.png" alt="Lápis" class="pictogram border" data-word="lápis" width="80">
+                        <p class="fw-bold">LÁPIS</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/objects/blocks.png" alt="Blocks toy" class="pictogram border" data-word="blocks" width="80">
-                        <p class="fw-bold">BLOCKS</p>
+                        <img src="./images/objects/blocks.png" alt="Blocos" class="pictogram border" data-word="blocos" width="80">
+                        <p class="fw-bold">BLOCOS</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/objects/teddy.png" alt="Teddy bear toy" class="pictogram border" data-word="teddy bear" width="80">
-                        <p class="fw-bold">TEDDY BEAR</p>
+                        <img src="./images/objects/teddy.png" alt="Urso de Pelúcia" class="pictogram border" data-word="urso de pelúcia" width="80">
+                        <p class="fw-bold">URSO DE PELÚCIA</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/objects/train.png" alt="Train toy" class="pictogram border" data-word="train" width="80">
-                        <p class="fw-bold">TRAIN</p>
+                        <img src="./images/objects/train.png" alt="Trem" class="pictogram border" data-word="trem" width="80">
+                        <p class="fw-bold">TREM</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/objects/puzzle.png" alt="Puzzle toy" class="pictogram border" data-word="puzzle" width="80">
-                        <p class="fw-bold">PUZZLE</p>
+                        <img src="./images/objects/puzzle.png" alt="Quebra-Cabeça" class="pictogram border" data-word="quebra-cabeça" width="80">
+                        <p class="fw-bold">QUEBRA-CABEÇA</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/objects/drum.png" alt="Drum toy" class="pictogram border" data-word="drum" width="80">
-                        <p class="fw-bold">DRUM</p>
+                        <img src="./images/objects/drum.png" alt="Bateria" class="pictogram border" data-word="bateria" width="80">
+                        <p class="fw-bold">BATERIA</p>
                     </div>
                 </div>
             </div>
     
             <!-- Greetings Section -->
             <div id="greetings" class="content-section">
-                <h4 class="section-title text-center" data-word="Greetings">GREETINGS</h4>
+                <h4 class="section-title text-center" data-word="Saudações">SAUDAÇÕES</h4>
                 <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-4">
                     <div class="col text-center pictogram-container">
-                        <img src="./images/greetings/hello.png" alt="Hello greeting" class="pictogram border" data-word="hello" width="80">
-                        <p class="fw-bold">HELLO</p>
+                        <img src="./images/greetings/hello.png" alt="Olá" class="pictogram border" data-word="olá" width="80">
+                        <p class="fw-bold">OLÁ</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/greetings/goodbye.png" alt="Goodbye greeting" class="pictogram border" data-word="goodbye" width="80">
-                        <p class="fw-bold">GOODBYE</p>
+                        <img src="./images/greetings/goodbye.png" alt="Adeus" class="pictogram border" data-word="adeus" width="80">
+                        <p class="fw-bold">ADEUS</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/greetings/please.png" alt="Please greeting" class="pictogram border" data-word="please" width="80">
-                        <p class="fw-bold">PLEASE</p>
+                        <img src="./images/greetings/please.png" alt="Por Favor" class="pictogram border" data-word="por favor" width="80">
+                        <p class="fw-bold">POR FAVOR</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/greetings/thankyou.png" alt="Thank you greeting" class="pictogram border" data-word="thank you" width="80">
-                        <p class="fw-bold">THANK YOU</p>
+                        <img src="./images/greetings/thankyou.png" alt="Obrigado" class="pictogram border" data-word="obrigado" width="80">
+                        <p class="fw-bold">OBRIGADO</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/greetings/goodmorning.png" alt="Good morning greeting" class="pictogram border" data-word="good morning" width="80">
-                        <p class="fw-bold">GOOD MORNING</p>
+                        <img src="./images/greetings/goodmorning.png" alt="Bom Dia" class="pictogram border" data-word="bom dia" width="80">
+                        <p class="fw-bold">BOM DIA</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/greetings/goodnight.png" alt="Good night greeting" class="pictogram border" data-word="good night" width="80">
-                        <p class="fw-bold">GOOD NIGHT</p>
+                        <img src="./images/greetings/goodnight.png" alt="Boa Noite" class="pictogram border" data-word="boa noite" width="80">
+                        <p class="fw-bold">BOA NOITE</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/greetings/welcome.png" alt="Welcome greeting" class="pictogram border" data-word="welcome" width="80">
-                        <p class="fw-bold">WELCOME</p>
+                        <img src="./images/greetings/welcome.png" alt="Bem-Vindo" class="pictogram border" data-word="bem-vindo" width="80">
+                        <p class="fw-bold">BEM-VINDO</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/greetings/sorry.png" alt="Sorry greeting" class="pictogram border" data-word="sorry" width="80">
-                        <p class="fw-bold">SORRY</p>
+                        <img src="./images/greetings/sorry.png" alt="Desculpe" class="pictogram border" data-word="desculpe" width="80">
+                        <p class="fw-bold">DESCULPE</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/greetings/hi.png" alt="Hi greeting" class="pictogram border" data-word="hi" width="80">
-                        <p class="fw-bold">HI</p>
+                        <img src="./images/greetings/hi.png" alt="Oi" class="pictogram border" data-word="oi" width="80">
+                        <p class="fw-bold">OI</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/greetings/bye.png" alt="Bye greeting" class="pictogram border" data-word="bye" width="80">
-                        <p class="fw-bold">BYE</p>
+                        <img src="./images/greetings/bye.png" alt="Tchau" class="pictogram border" data-word="tchau" width="80">
+                        <p class="fw-bold">TCHAU</p>
                     </div>
                 </div>
             </div>
     
             <!-- Emotions Section -->
             <div id="emotions" class="content-section">
-                <h4 class="section-title text-center" data-word="Emotions">EMOTIONS</h4>
+                <h4 class="section-title text-center" data-word="Emoções">EMOÇÕES</h4>
                 <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-4">
                     <div class="col text-center pictogram-container">
-                        <img src="./images/emotions/happy.png" alt="Happy emotion" class="pictogram border" data-word="happy" width="80">
-                        <p class="fw-bold">HAPPY</p>
+                        <img src="./images/emotions/happy.png" alt="Feliz" class="pictogram border" data-word="feliz" width="80">
+                        <p class="fw-bold">FELIZ</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/emotions/sad.png" alt="Sad emotion" class="pictogram border" data-word="sad" width="80">
-                        <p class="fw-bold">SAD</p>
+                        <img src="./images/emotions/sad.png" alt="Triste" class="pictogram border" data-word="triste" width="80">
+                        <p class="fw-bold">TRISTE</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/emotions/angry.png" alt="Angry emotion" class="pictogram border" data-word="angry" width="80">
-                        <p class="fw-bold">ANGRY</p>
+                        <img src="./images/emotions/angry.png" alt="Bravo" class="pictogram border" data-word="bravo" width="80">
+                        <p class="fw-bold">BRAVO</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/emotions/scared.png" alt="Scared emotion" class="pictogram border" data-word="scared" width="80">
-                        <p class="fw-bold">SCARED</p>
+                        <img src="./images/emotions/scared.png" alt="Assustado" class="pictogram border" data-word="assustado" width="80">
+                        <p class="fw-bold">ASSUSTADO</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/emotions/surprised.png" alt="Surprised emotion" class="pictogram border" data-word="surprised" width="80">
-                        <p class="fw-bold">SURPRISED</p>
+                        <img src="./images/emotions/surprised.png" alt="Surpreso" class="pictogram border" data-word="surpreso" width="80">
+                        <p class="fw-bold">SURPRESO</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/emotions/excited.png" alt="Excited emotion" class="pictogram border" data-word="excited" width="80">
-                        <p class="fw-bold">EXCITED</p>
+                        <img src="./images/emotions/excited.png" alt="Animado" class="pictogram border" data-word="animado" width="80">
+                        <p class="fw-bold">ANIMADO</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/emotions/tired.png" alt="Tired emotion" class="pictogram border" data-word="tired" width="80">
-                        <p class="fw-bold">TIRED</p>
+                        <img src="./images/emotions/tired.png" alt="Cansado" class="pictogram border" data-word="cansado" width="80">
+                        <p class="fw-bold">CANSADO</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/emotions/sleepy.png" alt="Sleepy emotion" class="pictogram border" data-word="sleepy" width="80">
-                        <p class="fw-bold">SLEEPY</p>
+                        <img src="./images/emotions/sleepy.png" alt="Sonolento" class="pictogram border" data-word="sonolento" width="80">
+                        <p class="fw-bold">SONOLENTO</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/emotions/confused.png" alt="Confused emotion" class="pictogram border" data-word="confused" width="80">
-                        <p class="fw-bold">CONFUSED</p>
+                        <img src="./images/emotions/confused.png" alt="Confuso" class="pictogram border" data-word="confuso" width="80">
+                        <p class="fw-bold">CONFUSO</p>
                     </div>
                     <div class="col text-center pictogram-container">
-                        <img src="./images/emotions/silly.png" alt="Silly emotion" class="pictogram border" data-word="silly" width="80">
-                        <p class="fw-bold">SILLY</p>
+                        <img src="./images/emotions/silly.png" alt="Engraçado" class="pictogram border" data-word="engraçado" width="80">
+                        <p class="fw-bold">ENGRAÇADO</p>
                     </div>
                 </div>
             </div>
         </div>
     
         <div class="loading-indicator">
-            <span>Speaking</span>
+            <span>Falando</span>
             <div class="loading-dots">
                 <div class="dot"></div>
                 <div class="dot"></div>
@@ -670,20 +618,21 @@
     
                 function speak(text) {
                     const utterance = new SpeechSynthesisUtterance(text);
-                    utterance.lang = 'en-US';
+                    utterance.lang = 'pt-BR'; // Change to Portuguese
                     utterance.rate = 0.8;  // Slightly faster
-                    utterance.pitch = 1.2; // Slightly higher pitch
+                    utterance.pitch = 1.0; // Adjusted for male voice
                     utterance.volume = 1;
                     
-                    // Get available voices and set a female voice if possible
+                    // Try to find a Portuguese male voice
                     let voices = speechSynthesis.getVoices();
-                    let femaleVoice = voices.find(voice => 
-                        voice.name.includes('female') || 
-                        voice.name.includes('Samantha') || 
-                        voice.name.includes('Victoria'));
+                    let portugueseVoice = voices.find(voice => 
+                        (voice.lang.includes('pt') || voice.lang.includes('PT')) &&
+                        (!voice.name.includes('female') && !voice.name.includes('Luciana') && 
+                         (voice.name.includes('male') || voice.name.includes('Daniel')))
+                    );
                     
-                    if (femaleVoice) {
-                        utterance.voice = femaleVoice;
+                    if (portugueseVoice) {
+                        utterance.voice = portugueseVoice;
                     }
                     
                     // Rest of the function remains the same
