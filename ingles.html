@@ -1,0 +1,610 @@
+<html><head><base href="/" />
+    <html lang="en">
+    <head>    
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pictogram - Learning Pictograms</title>
+        
+        <link rel="icon" type="image/jpg" href="./imagenes/caraFeliz.jpg"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <style>
+            .pictogram, .section-title {
+                cursor: pointer;
+                transition: transform 0.2s;
+                border-radius: 10%;
+                
+               
+            }
+            .pictogram:hover, .section-title:hover {
+                transform: scale(1.1);
+                
+            }
+            .pictogram-container {
+            
+                margin-bottom: -15px;
+                padding: 0px; /* Added padding for better spacing */
+            }
+            .btn-return { background-color: #ff2534; color: #000; }
+            .bg-yellow-light { background-color: #f7eb65; color: #000; }
+            h3.text-center {
+                background-color: #f7eb65;
+                padding: 10px 15px; /* Increased padding */
+                border-radius: 10px;
+                margin: 20px auto;
+                max-width: 100%; /* Make it full width */
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                position: relative; /* For absolute positioning of home icon */
+            }
+            .home-link {
+                position: absolute;
+                left: 40px; /* Increased spacing from left */
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            .section-title {
+                background-color: #f4f4f4 !important; /* Changed from #f8f9fa to a slightly darker gray */
+                padding: 15px !important;
+                margin: 20px 0 !important;
+                border-radius: 10px !important;
+            }
+            .nav-buttons {
+                padding: 10px 5px;
+            }
+            .section-button {
+                display: inline-block;
+                margin: 7px;
+                padding: 12px 20px;
+                background-color: #f7eb65;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: transform 0.2s;
+                position: relative;
+                overflow: hidden;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                font-size: 14px;
+            }
+    
+            .section-button.active {
+                background-color: #ff2534 !important; /* Red background for active button */
+                color: white; /* White text for better contrast */
+            }
+    
+            /* For tablets and desktop - buttons in a single row */
+            @media (min-width: 769px) {
+                .nav-buttons .container {
+                    display: flex;
+                    flex-wrap: nowrap;
+                    justify-content: center;
+                    gap: 10px;
+                }
+                
+                .section-button {
+                    flex: 0 1 auto;
+                    width: auto;
+                }
+            }
+    
+            /* For mobile only - 2 buttons per row */
+            @media (max-width: 768px) {
+                .nav-buttons .container {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    gap: 10px;
+                }
+                
+                .section-button {
+                    width: calc(50% - 10px);
+                    margin: 0;
+                    flex-shrink: 0;
+                }
+            }
+    
+            @media (max-width: 480px) {
+                .section-button {
+                    font-size: 12px;
+                    padding: 6px 8px;
+                }
+            }
+            
+            .content-section {
+                display: none;
+                opacity: 0;
+                transition: opacity 0.3s ease-in-out;
+            }
+            .content-section.active {
+                display: block;
+                opacity: 1;
+            }
+            .pictogram {
+                position: relative;
+                display: inline-block;
+            }
+            .pictogram.speaking {
+                animation: pulse 1.5s infinite;
+            }
+            .pictogram.speaking::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 100%;
+                height: 100%;
+                transform: translate(-50%, -50%);
+                border: 2px solid #ff2534;
+                border-radius: 50%;
+                animation: soundWave 1.5s infinite;
+            }
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+                100% { transform: scale(1); }
+            }
+            @keyframes soundWave {
+                0% {
+                    width: 100%;
+                    height: 100%;
+                    opacity: 1;
+                }
+                100% {
+                    width: 150%;
+                    height: 150%;
+                    opacity: 0;
+                }
+            }
+            .loading-indicator {
+                position: fixed;
+                bottom: 80px; /* Increase bottom spacing */
+                right: 20px;
+                background: rgba(247, 235, 101, 0.9);
+                padding: 10px 20px;
+                border-radius: 20px;
+                display: none;
+                align-items: center;
+                gap: 10px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                z-index: 1000;
+            }
+            .loading-indicator.active {
+                display: flex;
+            }
+            .loading-indicator::before {
+                content: '🔊';
+                font-size: 1.2em;
+                animation: pulse 1s infinite;
+            }
+            .loading-dots {
+                display: flex;
+                gap: 4px;
+            }
+            .dot {
+                width: 8px;
+                height: 8px;
+                background: #000;
+                border-radius: 50%;
+                animation: dotPulse 1s infinite;
+            }
+            .dot:nth-child(2) { animation-delay: 0.2s; }
+            .dot:nth-child(3) { animation-delay: 0.4s; }
+            @keyframes dotPulse {
+                0%, 100% { transform: scale(0.8); opacity: 0.5; }
+                50% { transform: scale(1.2); opacity: 1; }
+            }
+            .container-fluid {
+                padding-bottom: 80px; /* Add space for fixed nav */
+            }
+    
+            /* Add this to ensure text is uppercase */
+            .section-button, .section-title {
+                text-transform: uppercase;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div class="container-fluid mt-3">
+            <h3 class="text-center mb-4 fw-bold">
+                <div class="d-flex align-items-center justify-content-center">
+                    <a class="home-link" href="./index.html"> 
+                        <img class="fw-bold" src="./imagenes/home.svg" alt="" width="50px" > 
+                    </a>
+                    <span class="pictogram" data-word="Learning Pictograms. Let's learn together!">
+                        Learning Pictograms<br>
+                        <span style="font-size: 0.9em; color: #666;">Let's learn together!</span>
+                    </span>
+                </div>
+            </h3>
+    
+            <!-- Navigation buttons moved here -->
+            <div class="nav-buttons">
+                <div class="container text-center">
+                    <button class="section-button active fw-bold" data-section="numbers">NUMBERS</button>
+                    <button class="section-button fw-bold" data-section="animals">ANIMALS</button>
+                    <button class="section-button fw-bold" data-section="colors">COLORS</button>
+                    <button class="section-button fw-bold" data-section="objects">OBJECTS</button>
+                    <button class="section-button fw-bold" data-section="greetings">GREETINGS</button>
+                    <button class="section-button fw-bold" data-section="emotions">EMOTIONS</button>
+                    
+                </div>
+            </div>
+     
+            <!-- Content sections follow -->
+            <div id="numbers" class="content-section active">
+                <h4 class="section-title text-center" data-word="Numbers">NUMBERS</h4>
+                <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-4">
+                    <div class="col text-center pictogram-container">
+                        <img src="./imagenes/numeros/1.png" alt="Number one" class="pictogram border" data-word="one" width="120">
+                        <p class="fw-bold">ONE</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./imagenes/numeros/2.png" alt="Number two" class="pictogram border" data-word="two" width="120">
+                        <p class="fw-bold">TWO</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./imagenes/numeros/3.png" alt="Number three" class="pictogram border" data-word="three" width="120">
+                        <p class="fw-bold">THREE</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./imagenes/numeros/4.png" alt="Number four" class="pictogram border" data-word="four" width="120">
+                        <p class="fw-bold">FOUR</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./imagenes/numeros/5.png" alt="Number five" class="pictogram border" data-word="five" width="120">
+                        <p class="fw-bold">FIVE</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./imagenes/numeros/6.png" alt="Number six" class="pictogram border" data-word="six" width="120">
+                        <p class="fw-bold">SIX</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./imagenes/numeros/7.png" alt="Number seven" class="pictogram border" data-word="seven" width="120">
+                        <p class="fw-bold">SEVEN</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./imagenes/numeros/8.png" alt="Number eight" class="pictogram border" data-word="eight" width="120">
+                        <p class="fw-bold">EIGHT</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./imagenes/numeros/9.png" alt="Number nine" class="pictogram border" data-word="nine" width="120">
+                        <p class="fw-bold">NINE</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./imagenes/numeros/10.png" alt="Number ten" class="pictogram border" data-word="ten" width="120">
+                        <p class="fw-bold">TEN</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Animals Section -->
+            <div id="animals" class="content-section">
+                <h4 class="section-title text-center" data-word="Animals">ANIMALS</h4>
+                <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-4">
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/animals/dog.png" alt="Dog animal" class="pictogram border" data-word="dog" width="80">
+                        <p class="fw-bold">DOG</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/animals/cat.png" alt="Cat animal" class="pictogram border" data-word="cat" width="80">
+                        <p class="fw-bold">CAT</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/animals/bird.png" alt="Bird animal" class="pictogram border" data-word="bird" width="80">
+                        <p class="fw-bold">BIRD</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/animals/fish.png" alt="Fish animal" class="pictogram border" data-word="fish" width="80">
+                        <p class="fw-bold">FISH</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/animals/rabbit.png" alt="Rabbit animal" class="pictogram border" data-word="rabbit" width="80">
+                        <p class="fw-bold">RABBIT</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/animals/horse.png" alt="Horse animal" class="pictogram border" data-word="horse" width="80">
+                        <p class="fw-bold">HORSE</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/animals/elephant.png" alt="Elephant animal" class="pictogram border" data-word="elephant" width="80">
+                        <p class="fw-bold">ELEPHANT</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/animals/lion.png" alt="Lion animal" class="pictogram border" data-word="lion" width="80">
+                        <p class="fw-bold">LION</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/animals/monkey.png" alt="Monkey animal" class="pictogram border" data-word="monkey" width="80">
+                        <p class="fw-bold">MONKEY</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/animals/giraffe.png" alt="Giraffe animal" class="pictogram border" data-word="giraffe" width="80">
+                        <p class="fw-bold">GIRAFFE</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Colors Section -->
+            <div id="colors" class="content-section">
+                <h4 class="section-title text-center" data-word="Colors">COLORS</h4>
+                <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-4">
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/colors/red.png" alt="Red color" class="pictogram border" data-word="red" width="80">
+                        <p class="fw-bold">RED</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/colors/blue.png" alt="Blue color" class="pictogram border" data-word="blue" width="80">
+                        <p class="fw-bold">BLUE</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/colors/yellow.png" alt="Yellow color" class="pictogram border" data-word="yellow" width="80">
+                        <p class="fw-bold">YELLOW</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/colors/green.png" alt="Green color" class="pictogram border" data-word="green" width="80">
+                        <p class="fw-bold">GREEN</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/colors/purple.png" alt="Purple color" class="pictogram border" data-word="purple" width="80">
+                        <p class="fw-bold">PURPLE</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/colors/orange.png" alt="Orange color" class="pictogram border" data-word="orange" width="80">
+                        <p class="fw-bold">ORANGE</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/colors/pink.png" alt="Pink color" class="pictogram border" data-word="pink" width="80">
+                        <p class="fw-bold">PINK</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/colors/brown.png" alt="Brown color" class="pictogram border" data-word="brown" width="80">
+                        <p class="fw-bold">BROWN</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/colors/black.png" alt="Black color" class="pictogram border" data-word="black" width="80">
+                        <p class="fw-bold">BLACK</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/colors/white.png" alt="White color" class="pictogram border" data-word="white" width="80">
+                        <p class="fw-bold">WHITE</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Objects and Toys Section -->
+            <div id="objects" class="content-section">
+                <h4 class="section-title text-center" data-word="Objects and Toys">OBJECTS AND TOYS</h4>
+                <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-4">
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/objects/ball.png" alt="Ball toy" class="pictogram border" data-word="ball" width="80">
+                        <p class="fw-bold">BALL</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/objects/car.png" alt="Car toy" class="pictogram border" data-word="car" width="80">
+                        <p class="fw-bold">CAR</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/objects/doll.png" alt="Doll toy" class="pictogram border" data-word="doll" width="80">
+                        <p class="fw-bold">DOLL</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/objects/book.png" alt="Book object" class="pictogram border" data-word="book" width="80">
+                        <p class="fw-bold">BOOK</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/objects/pencil.png" alt="Pencil object" class="pictogram border" data-word="pencil" width="80">
+                        <p class="fw-bold">PENCIL</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/objects/blocks.png" alt="Blocks toy" class="pictogram border" data-word="blocks" width="80">
+                        <p class="fw-bold">BLOCKS</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/objects/teddy.png" alt="Teddy bear toy" class="pictogram border" data-word="teddy bear" width="80">
+                        <p class="fw-bold">TEDDY BEAR</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/objects/train.png" alt="Train toy" class="pictogram border" data-word="train" width="80">
+                        <p class="fw-bold">TRAIN</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/objects/puzzle.png" alt="Puzzle toy" class="pictogram border" data-word="puzzle" width="80">
+                        <p class="fw-bold">PUZZLE</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/objects/drum.png" alt="Drum toy" class="pictogram border" data-word="drum" width="80">
+                        <p class="fw-bold">DRUM</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Greetings Section -->
+            <div id="greetings" class="content-section">
+                <h4 class="section-title text-center" data-word="Greetings">GREETINGS</h4>
+                <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-4">
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/greetings/hello.png" alt="Hello greeting" class="pictogram border" data-word="hello" width="80">
+                        <p class="fw-bold">HELLO</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/greetings/goodbye.png" alt="Goodbye greeting" class="pictogram border" data-word="goodbye" width="80">
+                        <p class="fw-bold">GOODBYE</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/greetings/please.png" alt="Please greeting" class="pictogram border" data-word="please" width="80">
+                        <p class="fw-bold">PLEASE</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/greetings/thankyou.png" alt="Thank you greeting" class="pictogram border" data-word="thank you" width="80">
+                        <p class="fw-bold">THANK YOU</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/greetings/goodmorning.png" alt="Good morning greeting" class="pictogram border" data-word="good morning" width="80">
+                        <p class="fw-bold">GOOD MORNING</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/greetings/goodnight.png" alt="Good night greeting" class="pictogram border" data-word="good night" width="80">
+                        <p class="fw-bold">GOOD NIGHT</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/greetings/welcome.png" alt="Welcome greeting" class="pictogram border" data-word="welcome" width="80">
+                        <p class="fw-bold">WELCOME</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/greetings/sorry.png" alt="Sorry greeting" class="pictogram border" data-word="sorry" width="80">
+                        <p class="fw-bold">SORRY</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/greetings/hi.png" alt="Hi greeting" class="pictogram border" data-word="hi" width="80">
+                        <p class="fw-bold">HI</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/greetings/bye.png" alt="Bye greeting" class="pictogram border" data-word="bye" width="80">
+                        <p class="fw-bold">BYE</p>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Emotions Section -->
+            <div id="emotions" class="content-section">
+                <h4 class="section-title text-center" data-word="Emotions">EMOTIONS</h4>
+                <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-4">
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/emotions/happy.png" alt="Happy emotion" class="pictogram border" data-word="happy" width="80">
+                        <p class="fw-bold">HAPPY</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/emotions/sad.png" alt="Sad emotion" class="pictogram border" data-word="sad" width="80">
+                        <p class="fw-bold">SAD</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/emotions/angry.png" alt="Angry emotion" class="pictogram border" data-word="angry" width="80">
+                        <p class="fw-bold">ANGRY</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/emotions/scared.png" alt="Scared emotion" class="pictogram border" data-word="scared" width="80">
+                        <p class="fw-bold">SCARED</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/emotions/surprised.png" alt="Surprised emotion" class="pictogram border" data-word="surprised" width="80">
+                        <p class="fw-bold">SURPRISED</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/emotions/excited.png" alt="Excited emotion" class="pictogram border" data-word="excited" width="80">
+                        <p class="fw-bold">EXCITED</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/emotions/tired.png" alt="Tired emotion" class="pictogram border" data-word="tired" width="80">
+                        <p class="fw-bold">TIRED</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/emotions/sleepy.png" alt="Sleepy emotion" class="pictogram border" data-word="sleepy" width="80">
+                        <p class="fw-bold">SLEEPY</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/emotions/confused.png" alt="Confused emotion" class="pictogram border" data-word="confused" width="80">
+                        <p class="fw-bold">CONFUSED</p>
+                    </div>
+                    <div class="col text-center pictogram-container">
+                        <img src="./images/emotions/silly.png" alt="Silly emotion" class="pictogram border" data-word="silly" width="80">
+                        <p class="fw-bold">SILLY</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="loading-indicator">
+            <span>Speaking</span>
+            <div class="loading-dots">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+    
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const pictograms = document.querySelectorAll('.pictogram, .section-title');
+                const sectionButtons = document.querySelectorAll('.section-button');
+                const contentSections = document.querySelectorAll('.content-section');
+                
+                pictograms.forEach(element => {
+                    element.addEventListener('click', function() {
+                        const word = this.dataset.word;
+                        speak(word);
+                    });
+                });
+    
+                // Add click handler for section buttons
+                sectionButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        // Remove active class from all buttons and sections
+                        sectionButtons.forEach(btn => btn.classList.remove('active'));
+                        contentSections.forEach(section => section.classList.remove('active'));
+    
+                        // Add active class to clicked button and corresponding section
+                        button.classList.add('active');
+                        const sectionId = button.dataset.section;
+                        document.getElementById(sectionId).classList.add('active');
+                        
+                        // Speak the section name
+                        speak(sectionId);
+                    });
+                });
+    
+                function speak(text) {
+                    const utterance = new SpeechSynthesisUtterance(text);
+                    utterance.lang = 'en-US';
+                    utterance.rate = 0.8;  // Slightly faster
+                    utterance.pitch = 1.2; // Slightly higher pitch
+                    utterance.volume = 1;
+                    
+                    // Get available voices and set a female voice if possible
+                    let voices = speechSynthesis.getVoices();
+                    let femaleVoice = voices.find(voice => 
+                        voice.name.includes('female') || 
+                        voice.name.includes('Samantha') || 
+                        voice.name.includes('Victoria'));
+                    
+                    if (femaleVoice) {
+                        utterance.voice = femaleVoice;
+                    }
+                    
+                    // Rest of the function remains the same
+                    const loadingIndicator = document.querySelector('.loading-indicator');
+                    loadingIndicator.classList.add('active');
+                    
+                    const pictogram = document.querySelector(`[data-word="${text.toLowerCase()}"]`);
+                    if (pictogram) {
+                        pictogram.classList.add('speaking');
+                    }
+                    
+                    utterance.onend = () => {
+                        loadingIndicator.classList.remove('active');
+                        if (pictogram) {
+                            pictogram.classList.remove('speaking');
+                        }
+                    };
+                    
+                    speechSynthesis.cancel();
+                    speechSynthesis.speak(utterance);
+                }
+    
+                // Add this to ensure voices are loaded
+                speechSynthesis.onvoiceschanged = function() {
+                    voices = speechSynthesis.getVoices();
+                };
+    
+                // Add scroll behavior for section navigation
+                document.querySelectorAll('.section-button').forEach(button => {
+                    button.addEventListener('click', () => {
+                        const sectionId = button.dataset.section;
+                        const section = document.getElementById(sectionId);
+                        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    });
+                });
+            });
+        </script>
+    
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    </body>
+    </html>
