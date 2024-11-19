@@ -1,180 +1,6 @@
 
 
-const translations = {
-    es: {
-        
-        colores1: "COLORES",
-        verde: "VERDE",
-        verdeClaro: "VERDE CLARO",
-        yo: "YO",
-        tu: "TÚ",
-        volver: "VOLVER AL INICIO",
-        quiero: "QUIERO",
-        noquiero: "NO QUIERO",
-        megusta: "ME GUSTA",
-        nomegusta1: "NO ME GUSTA",
-        gracias: "GRACIAS",
-        porfavor: "POR FAVOR",
-        manzana: "MANZANA",
-        banana: "BANANA",
-        naranja: "NARANJA",
-        frutilla: "FRUTILLA",
-        sandia: "SANDÍA",
-        mandarina: "MANDARINA",
-        uva: "UVAS",
-        pera: "PERA",
-        el: "ÉL",
-        nosotross: "NOSOTROS",
-        ellos: "ELLOS",
-        hacer: "HACER",
-        poner: "PONER",
-        ir: "IR",
-        es: "ES",
-        estar: "ESTAR",
-        iralbaño: "IR AL BAÑO",
-        alimentos: "ALIMENTOS",
-        bebidas: "BEBIDAS",
-        masemociones: "MÁS EMOCIONES",
-        comoestas: "¿CÓMO ESTÁS?",
-        mal: "MAL",
-        bien: "BIEN",
-        hola: "HOLA",
-        buendia: "BUEN DÍA",
-        graciass: "GRACIAS",
-        chau: "CHAU",
-        si: "SÍ",
-        no: "NO",
-        mas: "MÁS",
-        menos: "MENOS",
-        soy: "SOY",
-        familia: "FAMILIA",
-        casa: "CASA",
-        calendario: "CALENDARIO",
-        objetos: "OBJETOS",
-        escuela: "ESCUELA",
-        alimentos: "ALIMENTOS",
-        numeros1: "NUMEROS1",
-    },
-    en: {
-        
-        colores1: "COLORS",
-        verde: "GREEN",
-        verdeClaro: "LIGHT GREEN",
-        yo: "I",
-        tu: "YOU",
-        volver: "RETURN TO HOME",
-        quiero: "I WANT",
-        noquiero: "I DON'T WANT",
-        megusta: "I LIKE",
-        nomegusta1: "I DON'T LIKE",
-        gracias: "THANK YOU",
-        porfavor: "PLEASE",
-        manzana: "APPLE",
-        banana: "BANANA",
-        naranja: "ORANGE",
-        frutilla: "STRAWBERRY",
-        sandia: "WATERMELON",
-        mandarina: "MANDARIN",
-        uva: "GRAPE",
-        pera: "PEAR",
-        el: "HE",
-        nosotross: "WE",
-        ellos: "THEY",
-        hacer: "TO DO",
-        poner: "TO PUT",
-        ir: "TO GO",
-        es: "IS",
-        estar: "TO BE",
-        iralbaño: "TO GO TO THE BATHROOM",
-        alimentos: "FOOD",
-        bebidas: "DRINKS",
-        masemociones: "MORE EMOTIONS",
-        comoestas: "HOW ARE YOU?",
-        mal: "BAD",
-        bien: "GOOD",
-        hola: "HELLO",
-        buendia: "GOOD DAY",
-        graciass: "THANK YOU",
-        chau: "BYE",
-        si: "YES",
-        no: "NO",
-        mas: "MORE",
-        menos: "LESS",
-        soy: "I AM",
-        familia: "FAMILY",
-        casa: "HOUSE",
-        calendario: "CALENDAR",
-        objetos: "OBJECTS",
-        escuela: "SCHOOL",
-        alimentos: "FOOD",
-        numeros1: "NUMBERS",
-    }
-};
 
-function setLanguage(lang) {
-    const elements = {
-        
-        colores1: 'colores1',
-        verde: 'verde',
-        verdeClaro: 'verde-claro',
-        yo: 'yo',
-        tu: 'tu',
-        volver: 'volver',
-        quiero: 'quiero',
-        noquiero: 'noquiero',
-        megusta: 'megusta',
-        nomegusta1: 'nomegusta1',
-        gracias: 'gracias',
-        porfavor: 'porfavor',
-        manzana: 'manzana',
-        banana: 'banana',
-        naranja: 'naranja',
-        frutilla: 'frutilla',
-        sandia: 'sandia',
-        mandarina: 'mandarina',
-        uva: 'uva',
-        pera: 'pera',
-        el: 'el',
-        nosotross: 'nosotross',
-        ellos: 'ellos',
-        hacer: 'hacer',
-        poner: 'poner',
-        ir: 'ir',
-        es: 'es',
-        estar: 'estar',
-        iralbaño: 'iralbaño',
-        alimentos: 'alimentos',
-        bebidas: 'bebidas',
-        masemociones: 'masemociones',
-        comoestas: 'comoestas',
-        mal: 'mal',
-        bien: 'bien',
-        hola: 'hola',
-        buendia: 'buendia',
-        graciass: 'graciass',
-        chau: 'chau',
-        si: 'si',
-        no: 'no',
-        mas: 'mas',
-        menos: 'menos',
-        soy: 'soy',
-        familia: 'familia',
-        casa: 'casa',
-        calendario: 'calendario',
-        objetos: 'objetos',
-        escuela: 'escuela',
-        alimentos: "alimentos",
-        numeros1: "numeros1",
-        
-    };
-
-    Object.keys(elements).forEach(key => {
-        const element = document.getElementById(elements[key]);
-        if (element) {
-            element.innerText = translations[lang][key] || element.innerText;
-        }
-    });
-}
 // Función para reproducir el texto
 function speak(text) {
     const synth = window.speechSynthesis;
@@ -215,8 +41,8 @@ const ids = {
     'es': 'es',
     'estoy': 'estoy',
     'iralbaño': 'ir al baño',
-    'alimentos1': 'alimentos',
-    'bebidas': 'bebidas',
+    'comida': 'comida',
+    'agua': 'agua',
     'masemociones': 'mas emociones',
     'comoestass': '¿Cómo estás?',
     'mal': 'mal',
@@ -647,6 +473,8 @@ function manejarPictogramaSeleccionado(selector, modalId) {
   manejarPictogramaSeleccionado('.preposiciones-pictograma', 'preposicionesModal');
   manejarPictogramaSeleccionado('.preposiciones-pictograma', 'preposicionesModal');
   manejarPictogramaSeleccionado('.frutas-pictograma', 'frutasModal');
+  manejarPictogramaSeleccionado('.ropa-pictograma', 'ropaModal');
+  manejarPictogramaSeleccionado('.familia-pictograma', 'familiaModal');
   
   abrirModal('colores-link', 'colorModal');
   abrirModal('emociones-link', 'emocionesModal');
@@ -654,6 +482,9 @@ function manejarPictogramaSeleccionado(selector, modalId) {
   abrirModal('animales-link', 'animalesModal');
   abrirModal('preposiciones-link', 'preposicionesModal');
   abrirModal('frutas-link', 'frutasModal');
+  abrirModal('ropa-link', 'ropaModal');
+  abrirModal('familia-link', 'familiaModal');
+  
   
   // Puedes seguir añadiendo más categorías de pictogramas utilizando las mismas funciones
   
