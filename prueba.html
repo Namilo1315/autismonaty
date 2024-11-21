@@ -1,5 +1,60 @@
-<html><head><base href="." target="_blank"><title>Dibujemos - Editor de dibujo online</title>
+<html><head><base href="./" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/jpg" href="./imagenes/caragrande.png"/>
+<title>Dibujemos</title>
     <style>* { margin:0; padding:0; box-sizing:border-box; -webkit-touch-callout:none; -webkit-user-select:none; user-select:none; } html,body,canvas { width:100%; height:100%; touch-action:none; } .wrapper { min-height:100vh; display:flex; flex-direction:column; } button.active { background: #e0e0e0; } 
+    
+    .color-preset {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        cursor: pointer;
+        border: 2px solid #fff;
+        box-shadow: 0 0 0 1px #ccc;
+        transition: transform 0.2s;
+    }
+
+    .color-preset:hover {
+        transform: scale(1.1);
+    }
+    .toolbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: #f0f0f0;
+        padding: 10px;
+        display: flex;
+        gap: 10px;
+        border-bottom: 1px solid #ccc;
+        z-index: 100;
+    }
+    
+    .tool-group {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        padding: 0 10px;
+        border-right: 1px solid #ccc;
+    }
+
+    button {
+        padding: 5px 10px;
+        cursor: pointer;
+        background: white;
+        border: 1px solid #999;
+        border-radius: 3px;
+    }
+
+    button:hover {
+        background: #e0e0e0;
+    }
+
+    button.active {
+        background: #007bff;
+        color: white;
+    }
     
     @media (max-width: 768px) {
       .toolbar {
@@ -21,6 +76,27 @@
       input[type="range"] {
         width: 100% !important;
       }
+    @media (max-width: 480px) {
+       
+
+
+        .home-link {
+            width: 100%;
+            justify-content: center;
+            margin-bottom: 0px;
+        }
+    }
+
+    .home-link {
+        text-decoration: none;
+        font-size: 24px;
+        padding: 5px 10px;
+        color: #333;
+        display: flex;
+        align-items: center;
+    }
+
+    
     }
     </style>
     </head>
@@ -28,7 +104,7 @@
     
     <div class="wrapper">
     <div class="toolbar" style="background:#f0f0f0; padding:10px; display:flex; gap:10px; border-bottom:1px solid #ccc; z-index:100; flex-wrap:wrap;">
-      <a href="/" style="text-decoration:none; color:#333; font-size:24px;">🏠</a>
+      <a href="./index.html" class="home-link"> <img class="fw-bold" src="./imagenes/home.svg" alt="" width="50px" > </a>
     
       <div style="display:flex; gap:5px; align-items:center; padding:0 10px; border-right:1px solid #ccc; flex-wrap:wrap;">
         <button id="pencil" class="active" style="padding:5px 10px; cursor:pointer;">✏️ Lápiz</button>
@@ -41,6 +117,8 @@
             <button id="rectangle" style="width:100%; text-align:left; padding:5px 10px;">⬜ Rectángulo</button>
             <button id="circle" style="width:100%; text-align:left; padding:5px 10px;">⭕ Círculo</button>
             <button id="line" style="width:100%; text-align:left; padding:5px 10px;">📏 Línea</button>
+            <button id="heart" style="width:100%; text-align:left; padding:5px 10px;">❤️ Corazón</button>
+            
           </div>
         </div>
       </div>
@@ -48,16 +126,20 @@
       <div style="display:flex; gap:5px; align-items:center; padding:0 10px; border-right:1px solid #ccc; flex-wrap:wrap;">
         <input type="color" id="color" value="#000000" style="width:40px; height:40px;">
         <div class="presets" style="display:flex; gap:5px;">
-          <div class="preset" style="width:25px; height:25px; border-radius:50%; cursor:pointer; background:#ff0000;"></div>
-          <div class="preset" style="width:25px; height:25px; border-radius:50%; cursor:pointer; background:#00ff00;"></div>
-          <div class="preset" style="width:25px; height:25px; border-radius:50%; cursor:pointer; background:#0000ff;"></div>
-          <div class="preset" style="width:25px; height:25px; border-radius:50%; cursor:pointer; background:#ffff00;"></div>
+          <div class="preset color-preset" style="width:25px; height:25px; border-radius:50%; cursor:pointer; background:#ff0000;"></div>
+          <div class="preset color-preset" style="width:25px; height:25px; border-radius:50%; cursor:pointer; background:#00ff00;"></div>
+          <div class="preset color-preset" style="width:25px; height:25px; border-radius:50%; cursor:pointer; background:#0000ff;"></div>
+          <div class="preset color-preset" style="width:25px; height:25px; border-radius:50%; cursor:pointer; background:#ffff00;"></div>
+          <div class="preset color-preset" style="width:25px; height:25px; border-radius:50%; cursor:pointer; background: #ff09bd"></div>
+          <div class="preset color-preset" style="width:25px; height:25px; border-radius:50%; cursor:pointer; background: #ffae00"></div>
+          <div class="preset color-preset" style="width:25px; height:25px; border-radius:50%; cursor:pointer; background: #fa82fa"></div>
+          <div class="preset color-preset" style="width:25px; height:25px; border-radius:50%; cursor:pointer; background: #00ffff"></div>
         </div>
         <span>Grosor:</span>
         <input type="range" id="size" min="1" max="50" value="5" style="width:100px;">
       </div>
     
-      <div style="display:flex; gap:5px; align-items:center; padding:0 10px; flex-wrap:wrap;">
+      <div class="tool-group" style="display:flex; gap:5px; align-items:center; padding:0 10px; flex-wrap:wrap;">
         <button id="undo" style="padding:5px 10px; cursor:pointer;">↩️ Deshacer</button>
         <button id="clear" style="padding:5px 10px; cursor:pointer;">🗑️ Limpiar</button>
         <button id="save" style="padding:5px 10px; cursor:pointer;">💾 Guardar</button>
@@ -76,6 +158,14 @@
       canvas.height = window.innerHeight - document.querySelector('.toolbar').offsetHeight;
     }
     
+    function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight - 60;
+    
+            // Inicializar el lienzo con un color base (blanco)
+            ctx.fillStyle = "#FFFFFF";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
     
@@ -150,8 +240,30 @@
           ctx.lineTo(currentX, currentY);
           ctx.stroke();
           break;
+          
+  case 'line':
+    ctx.putImageData(snapshot, 0, 0);
+    ctx.beginPath();
+    ctx.moveTo(startX, startY);
+    ctx.lineTo(currentX, currentY);
+    ctx.stroke();
+    break;
+
+  case 'heart':
+    ctx.putImageData(snapshot, 0, 0);
+    ctx.beginPath();
+    // Corazón con un diseño mejorado
+    ctx.moveTo(startX, startY);
+    ctx.bezierCurveTo(startX - 20, startY - 30, startX - 60, startY + 10, startX, startY + 40);
+    ctx.bezierCurveTo(startX + 60, startY + 10, startX + 20, startY - 30, startX, startY);
+    ctx.closePath();
+    ctx.stroke();
+    break;
+  
+}
+
       }
-    }
+    
     
     function stopDrawing(e) {
       e.preventDefault();
