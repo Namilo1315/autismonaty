@@ -35,7 +35,7 @@
   }
   
   header {
-    background: var(--primary);
+    background: linear-gradient(45deg, #FFD93D, #FFB347);
     color: white;
     padding: 0.2rem 0;
     margin-bottom: 1rem;
@@ -134,7 +134,7 @@
     padding: 0.8rem;
     border: none;
     border-radius: 5px;
-    background: var(--primary);
+    background: linear-gradient(45deg, #FFD93D, #FFB347);
     color: white;
     cursor: pointer;
     transition: transform 0.2s;
@@ -220,6 +220,7 @@
   
     .breathing-text {
       font-size: 1.2rem;
+      font-weight: 700;
     }
   
     .emotion-buttons {
@@ -234,16 +235,22 @@
     .home-icon{
       display: none;
     }
+   
   }
+  @media (max-width: 480px) {
+    .small-circle {
+      display: none;
+    }
+    }
   </style>
   </head>
   <body>
     <header>
       <div class="container">
         <div class="header-content">
-          <svg class="home-icon" viewBox="0 0 24 24" onclick="window.location.href='/'">
-            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-          </svg>
+         <a href="./index.html"><svg class="home-icon" viewBox="0 0 24 24" onclick="window.location.href='/'">
+          <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+        </svg></a> 
           <h1>Herramientas de Autorregulación</h1>
         </div>
       
