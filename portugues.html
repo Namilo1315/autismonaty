@@ -119,6 +119,21 @@
                     font-size: 12px;
                     padding: 6px 8px;
                 }
+                .header-robot {
+                   display: none;
+                }
+                .img1{
+                display: none;
+            }
+           .language-btn{
+            margin-top: 38px;
+            
+           }
+                .ingles{
+                    font-size: 10px;
+                       /* Altura del botón */
+                   
+                }
             }
             
             .content-section {
@@ -282,7 +297,7 @@
         <div class="container-fluid ">
             <div class="language-selector">
                 <button class="language-btn" onclick="toggleLanguageMenu()">
-                    <span id="currentLanguage">Português</span> 🌐
+                    <span  class="ingles" id="currentLanguage">Português</span> 🌐
                 </button>
                 <div class="language-menu" id="languageMenu">
                     <a  class="idioma" href="./ingles.html"><button onclick="changeLanguage('en')">English</button></a>
@@ -293,11 +308,11 @@
             <h3 class="text-center mb-4 fw-bold">
                 <div class="d-flex align-items-center justify-content-center">
                     <a class="home-link" href="./index.html"> 
-                        <img class="fw-bold" src="./imagenes/home.svg" alt="" width="50px"> 
+                        <img class="fw-bold img1" src="./imagenes/home.svg" alt="" width="50px"> 
                     </a>
                     <span class="pictogram" data-word="Aprendendo Pictogramas. Vamos aprender juntos!">
                         Aprendendo Pictogramas<br>
-                        <span style="font-size: 0.8em; color: #666;">Vamos aprender juntos!</span>
+                        
                     </span>
                 </div>
                 <svg class="header-robot" viewBox="0 0 100 100">

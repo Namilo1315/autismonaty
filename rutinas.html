@@ -7,7 +7,7 @@
         <link rel="icon" type="image/jpg" href="./imagenes/caragrande.png"/>
         <style>
     body {
-        font-family: 'Comic Sans MS', cursive, sans-serif;
+        font-family: 'Comic Sans MS';
         background: #fffcf9;
         padding: 20px;
     }
@@ -171,8 +171,8 @@
     
     .routine-text {
         flex-grow: 1;
-        font-size: 1.1em;
-        color: #444;
+        font-size: 1.3em;
+        color: #000000;
         cursor: pointer;
         padding: 5px 10px;
         border-radius: 8px;
@@ -205,7 +205,7 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-size: 4em;
+        font-size: 3em;
         display: none;
         z-index: 1000;
         animation: celebrate 1s infinite;
@@ -272,6 +272,16 @@
             font-size: 0.8em;
             padding: 6px 10px;
         }
+        .celebration {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 1.5em;
+        display: none;
+        z-index: 1000;
+        animation: celebrate 1s infinite;
+    }
     }
     
     @keyframes repeatAction {
@@ -302,67 +312,67 @@
                 <!-- Los elementos de la rutina se generarán dinámicamente -->
             </div>
         </div>
-        <div class="celebration" id="celebration">🎉 ¡Genial! ¡Sigue así! </div>
+        <div class="celebration" id="celebration">🎉 ¡Muy Bien! </div>
      
     <script>
     const routineItems = [
         {
             icon: '<img src="./imagenes/rutinas/levantar de la cama.png" alt="Niño despertándose" class="icon">',
-            text: "Me levanto"
+            text: "ME LEVANTO"
         },
         {
             icon: '<img src="./imagenes/rutinas/subirse la camiseta.png" alt="Vestirse" class="icon">',
-            text: "Me visto"
+            text: "ME VISTO"
         },
         {
             icon: '<img src="./imagenes/rutinas/iralbaño.png" alt="Ir al baño" class="icon">',
-            text: "Voy al baño"
+            text: "VOY AL BAÑO"
         },
         {
             icon: '<img src="./imagenes/rutinas/cepillar los dientes.png" alt="Cepillarse los dientes" class="icon">',
-            text: "Me lavo los dientes"
+            text: "ME LAVO LOS DIENTES"
         },
         {
             icon: '<img src="./imagenes/rutinas/lavado de manos.png" alt="Lavarse las manos" class="icon">',
-            text: "Me lavo las manos"
+            text: "ME LAVO LAS MANOS"
         },
         {
             icon: '<img src="./imagenes/rutinas/secar las manos.png" alt="Secarse las manos" class="icon">',
-            text: "Me seco las manos"
+            text: "ME SECO LAS MANOS"
         },
         
         {
             icon: '<img src="./imagenes/rutinas/desayunar (1).png" alt="Desayuno" class="icon">',
-            text: "Desayuno"
+            text: "DESAYUNO"
         },
       
         {
             icon: '<img src="./imagenes/rutinas/escuela.png" alt="Prepararse para la escuela" class="icon">',
-            text: "Me preparo para la escuela"
+            text: "ME PREPARO PARA LA ESCUELA"
         },
         {
             icon: '<img src="./imagenes/rutinas/terapias.png" alt="Ir a terapia" class="icon">',
-            text: "Voy a terapia"
+            text: "VOY A TERAPIA"
         },
         {
             icon: '<img src="./imagenes/rutinas/jugar al corro.png" alt="Jugando" class="icon">',
-            text: "Juego"
+            text: "JUEGO"
         },
         {
             icon: '<img src="./imagenes/rutinas/escuela (2).png" alt="Haciendo tarea" class="icon">',
-            text: "Hago la tarea"
+            text: "HAGO LA TAREA"
         },
         {
             icon: '<img src="./imagenes/rutinas/comer (2).png" alt="Cenando" class="icon">',
-            text: "Ceno"
+            text: "CENO"
         },
         {
             icon: '<img src="./imagenes/rutinas/ducha.png" alt="Bañarse" class="icon">',
-            text: "Me baño"
+            text: "ME BAÑO"
         },
         {
             icon: '<img src="./imagenes/rutinas/dormir.png" alt="Ir a dormir" class="icon">',
-            text: "Me voy a dormir"
+            text: "ME VOY A DORMIR"
         }
     ];
     

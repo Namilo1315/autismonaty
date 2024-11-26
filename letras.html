@@ -14,7 +14,7 @@
     }
     
     body {
-        font-family: 'Comic Sans MS', cursive;
+        font-family: 'Comic Sans MS';
         background: linear-gradient(135deg, #f6f8ff 0%, #ffffff 100%);
         min-height: 100vh;
         padding: 20px;
@@ -55,24 +55,20 @@
     h1 {
         text-align: center;
         background: linear-gradient(45deg, #FFD93D, #FFB347);
-        background-size: 300% 300%;
         -webkit-background-clip: text;
+        
         background-clip: text;
         color: transparent;
-        font-size: 3.8em;
-        margin-bottom: 30px;
-        animation: rainbow 4s linear infinite, tiltTitle 3s ease-in-out infinite;
+        font-size: 3.5em;
+        margin-bottom: 20px;
+        animation: bounce 2s infinite;
         position: relative;
+       
+        
     }
     
-    h1::after {
-        content: "🌈";
-        position: absolute;
-        top: -20px;
-        right: 20%;
-        font-size: 0.6em;
-        animation: float 3s ease-in-out infinite;
-    }
+    
+    
     
     .alphabet-container {
         display: grid;
@@ -202,7 +198,9 @@
         </svg>
     </a>
     <div class="container ">
-        <h1>¡Aprendamos el ABC!</h1>
+        
+        <br>
+        <h1>¡Aprendamos el ABC! </h1>
         <div class="alphabet-container" id="alphabetContainer">
         </div>
     </div>
