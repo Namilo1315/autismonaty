@@ -1,0 +1,272 @@
+<html>
+    <head>
+        <base href="./" />
+        <link rel="icon" href="data:," />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+       
+        <link rel="icon" type="image/jpg" href="./imagenes/caragrande.png"/>
+       <title>Aprendiendo el ABC</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: 'Comic Sans MS', cursive;
+        background: linear-gradient(135deg, #f6f8ff 0%, #ffffff 100%);
+        min-height: 100vh;
+        padding: 20px;
+    }
+    
+    .container {
+        max-width: 1150px;
+        margin: 0 auto;
+        box-shadow: 0 0 20px rgb(255, 180, 5);
+        border-radius: 25px;
+    }
+    .routine-container {
+        max-width: 1000px;
+        margin: 0 auto;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 25px;
+        padding: 20px;
+        box-shadow: 0 0 20px rgb(255, 180, 5);
+    }
+    
+    .home-icon {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        width: 40px;
+        height: 40px;
+        transition: transform 0.3s ease;
+        z-index: 100;
+        background: linear-gradient(45deg, #FFD93D, #FFB347);
+        padding: 8px;
+        border-radius: 10px;
+    }
+    
+    .home-icon:hover {
+        transform: scale(1.2);
+    }
+    
+    h1 {
+        text-align: center;
+        background: linear-gradient(45deg, #FFD93D, #FFB347);
+        background-size: 300% 300%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-size: 3.8em;
+        margin-bottom: 30px;
+        animation: rainbow 4s linear infinite, tiltTitle 3s ease-in-out infinite;
+        position: relative;
+    }
+    
+    h1::after {
+        content: "🌈";
+        position: absolute;
+        top: -20px;
+        right: 20%;
+        font-size: 0.6em;
+        animation: float 3s ease-in-out infinite;
+    }
+    
+    .alphabet-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 20px;
+        padding: 20px;
+    }
+    
+    .letter-card {
+        background: white;
+        border-radius: 15px;
+        padding: 15px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        transition: all 0.4s ease;
+        cursor: pointer;
+        aspect-ratio: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        border: 4px solid transparent;
+        background-image: linear-gradient(white, white), 
+                         linear-gradient(45deg, #FFD93D, #FFB347);
+        background-origin: border-box;
+        background-clip: content-box, border-box;
+        position: relative;
+        overflow: visible;
+    }
+    
+    .letter-card:hover {
+        transform: translateY(-10px) scale(1.05);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+    
+    .uppercase {
+        font-size: 3.2em;
+        color: #FF8C42;
+        line-height: 1;
+        margin-bottom: 5px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .lowercase {
+        font-size: 2.7em;
+        color: #4a90e2;
+        line-height: 1;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    }
+    
+    .example {
+        margin-top: 5px;
+        font-size: 1.3em;
+        color: #666;
+        font-weight: bold;
+    }
+    
+    .icon-container {
+        font-size: 2em;
+        margin-top: 5px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: wiggle 2s ease-in-out infinite;
+    }
+    
+    @keyframes rainbow {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+    
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-15px); }
+    }
+    
+    @keyframes wiggle {
+        0%, 100% { transform: rotate(-3deg); }
+        50% { transform: rotate(3deg); }
+    }
+    
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-15px); }
+    }
+    
+    @keyframes tiltTitle {
+        0%, 100% { transform: rotate(-2deg); }
+        50% { transform: rotate(2deg); }
+    }
+    
+    @media (max-width: 768px) {
+        .alphabet-container {
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 15px;
+        }
+        
+        .letter-card {
+            padding: 10px;
+        }
+        
+        .uppercase {
+            font-size: 2.5em;
+        }
+        
+        .lowercase {
+            font-size: 2em;
+        }
+    
+        .home-icon {
+            display: none;
+        }
+    
+        h1 {
+            font-size: 2.8em;
+        }
+    }
+    </style>
+    </head>
+    <body>
+    <a href="./index.html" class="home-button">
+        <svg class="home-icon" viewBox="0 0 64 64">
+            <path d="M32 2 L2 32 L12 32 L12 62 L52 62 L52 32 L62 32 Z" fill="white"/>
+            <rect x="22" y="42" width="30" height="30" fill="white"/>
+        </svg>
+    </a>
+    <div class="container ">
+        <h1>¡Aprendamos el ABC!</h1>
+        <div class="alphabet-container" id="alphabetContainer">
+        </div>
+    </div>
+    
+    <script>
+    const alphabet = [
+        {letter: 'A', example: 'Avión', icon: '✈️'},
+        {letter: 'B', example: 'Barco', icon: '⛵'},
+        {letter: 'C', example: 'Casa', icon: '🏠'},
+        {letter: 'D', example: 'Delfín', icon: '🐬'},
+        {letter: 'E', example: 'Elefante', icon: '🐘'},
+        {letter: 'F', example: 'Flor', icon: '🌸'},
+        {letter: 'G', example: 'Gato', icon: '🐱'},
+        {letter: 'H', example: 'Helado', icon: '🍦'},
+        {letter: 'I', example: 'Iglú', icon: '🏠'},
+        {letter: 'J', example: 'Jirafa', icon: '🦒'},
+        {letter: 'K', example: 'Kiwi', icon: '🥝'},
+        {letter: 'L', example: 'León', icon: '🦁'},
+        {letter: 'M', example: 'Mono', icon: '🐒'},
+        {letter: 'N', example: 'Nube', icon: '☁️'},
+        {letter: 'Ñ', example: 'Ñoqui', icon: '🍝'},
+        {letter: 'O', example: 'Oso', icon: '🐻'},
+        {letter: 'P', example: 'Pato', icon: '🦆'},
+        {letter: 'Q', example: 'Queso', icon: '🧀'},
+        {letter: 'R', example: 'Ratón', icon: '🐭'},
+        {letter: 'S', example: 'Sol', icon: '☀️'},
+        {letter: 'T', example: 'Tren', icon: '🚂'},
+        {letter: 'U', example: 'Uva', icon: '🍇'},
+        {letter: 'V', example: 'Vaca', icon: '🐮'},
+        {letter: 'W', example: 'Waffle', icon: '🧇'},
+        {letter: 'X', example: 'Xilófono', icon: '🎵'},
+        {letter: 'Y', example: 'Yoyo', icon: '🪀'},
+        {letter: 'Z', example: 'Zapato', icon: '👞'}
+    ];
+    
+    const container = document.getElementById('alphabetContainer');
+    
+    alphabet.forEach(({letter, example, icon}) => {
+        const card = document.createElement('div');
+        card.className = 'letter-card';
+        card.innerHTML = `
+            <div class="uppercase">${letter}</div>
+            <div class="lowercase">${letter.toLowerCase()}</div>
+            <div class="example">${example}</div>
+            <div class="icon-container">${icon}</div>
+        `;
+        container.appendChild(card);
+    
+        // Add touch and click support
+        const handleInteraction = () => {
+            card.style.animation = 'bounce 1s';
+            setTimeout(() => card.style.animation = '', 1000);
+            playLetterSound(letter);
+        };
+    
+        card.addEventListener('click', handleInteraction);
+        card.addEventListener('touchstart', handleInteraction, {passive: true});
+    });
+    
+    function playLetterSound(letter) {
+        const utterance = new SpeechSynthesisUtterance(letter);
+        utterance.lang = 'es-ES';
+        window.speechSynthesis.speak(utterance);
+    }
+    </script>
+    </body>
+    </html>

@@ -1,0 +1,553 @@
+<html>
+    <head>
+        <base href="./">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Pictograma </title>
+        <link rel="icon" type="image/jpg" href="./imagenes/caragrande.png"/>
+        <style>
+    body {
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        background: #fffcf9;
+        padding: 20px;
+    }
+    
+    .home-button {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 1000;
+        padding: 15px;
+        background: linear-gradient(45deg, #FFD93D, #FFB347);
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 8px rgba(255, 4, 4, 0.2);
+    }
+    
+    .home-button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    }
+    
+    .home-button svg path,
+    .home-button svg rect {
+        fill: white;
+    }
+    
+    .home-icon {
+        width: 20px;
+        height: 20px;
+        
+    }
+    
+    .days-container {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+        gap: 10px;
+    }
+    
+    .day-button {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 15px;
+        background: linear-gradient(45deg, #FFD93D, #FFB347);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 1.1em;
+        color: white;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .day-button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+    
+    .day-button.active {
+        transform: scale(1.1);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    }
+    
+    .day-button.progress-25 {
+        background: linear-gradient(45deg, #FFD93D 75%, #4CAF50 25%);
+    }
+    
+    .day-button.progress-50 {
+        background: linear-gradient(45deg, #FFD93D 50%, #4CAF50 50%);
+    }
+    
+    .day-button.progress-75 {
+        background: linear-gradient(45deg, #FFD93D 25%, #4CAF50 75%);
+    }
+    
+    .day-button.completed {
+        background: linear-gradient(45deg, #4CAF50, #81C784);
+        border: 2px solid #2E7D32;
+        animation: completedPulse 2s infinite;
+    }
+    
+    @keyframes completedPulse {
+        0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4); }
+        70% { box-shadow: 0 0 0 10px rgba(76, 175, 80, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
+    }
+    
+    .routine-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 25px;
+        padding: 20px;
+        box-shadow: 0 0 20px rgb(255, 180, 5);
+    }
+    
+    h1 {
+        text-align: center;
+        background: linear-gradient(45deg, #FFD93D, #FFB347);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-size: 2.5em;
+       
+        animation: bounce 2s infinite;
+    }
+    
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+    
+    #routineList {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 10px;
+    }
+    
+    .routine-item {
+        display: flex;
+        align-items: center;
+        margin: 0;
+        padding: 10px;
+        border: 3px solid #FFB347;
+        border-radius: 15px;
+        transition: all 0.3s ease;
+        background-color: white;
+        font-size: 0.9em;
+    }
+    
+    .routine-item:hover {
+        transform: scale(1.03) rotate(1deg);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .icon-container {
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+    
+    .icon-container:hover {
+        transform: scale(1.1);
+    }
+    
+    .icon {
+        width: 70px;
+        height: 70px;
+        margin-right: 15px;
+        animation: wiggle 2s infinite;
+        pointer-events: none; /* This prevents the img from interfering with the click */
+    }
+    
+    @keyframes wiggle {
+        0%, 100% { transform: rotate(-3deg); }
+        50% { transform: rotate(3deg); }
+    }
+    
+    .routine-text {
+        flex-grow: 1;
+        font-size: 1.1em;
+        color: #444;
+        cursor: pointer;
+        padding: 5px 10px;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+    }
+    
+    .routine-text:hover {
+        background-color: rgba(255, 217, 61, 0.2);
+    }
+    
+    .routine-text.repeating {
+        animation: repeatAction 0.5s ease;
+        background-color: rgba(255, 179, 71, 0.2);
+    }
+    
+    .checkbox {
+        width: 35px;
+        height: 35px;
+        cursor: pointer;
+        accent-color: #4CAF50;
+    }
+    
+    .routine-item.completed {
+        background: linear-gradient(45deg, #E8F5E9, #C8E6C9);
+        border-color: #4CAF50;
+    }
+    
+    .celebration {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 4em;
+        display: none;
+        z-index: 1000;
+        animation: celebrate 1s infinite;
+    }
+    
+    @keyframes celebrate {
+        0% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+        50% { transform: translate(-50%, -50%) scale(1.2) rotate(10deg); }
+        100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+    }
+    
+    @media (max-width: 768px) {
+        #routineList {
+            grid-template-columns: 1fr;
+        }
+        
+        .home-button {
+            display: none; /* Hide home button on mobile */
+        }
+        
+        .routine-container {
+            padding: 10px;
+            margin: 10px;
+        }
+        
+        .days-container {
+            gap: 5px;
+        }
+        
+        .day-button {
+            font-size: 0.9em;
+            padding: 8px 12px;
+        }
+        
+        h1 {
+            font-size: 1.8em;
+        }
+        
+        .routine-item {
+            padding: 8px;
+        }
+        
+        .icon {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .checkbox {
+            width: 25px;
+            height: 25px;
+        }
+        
+        .routine-text {
+            font-size: 0.9em;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        h1 {
+            font-size: 1.5em;
+        }
+        
+        .day-button {
+            font-size: 0.8em;
+            padding: 6px 10px;
+        }
+    }
+    
+    @keyframes repeatAction {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+    </style></head><body>
+       <a href="./index.html" class="home-button">
+        <svg class="home-icon" viewBox="0 0 64 64">
+            <path d="M32 2 L2 32 L12 32 L12 62 L52 62 L52 32 L62 32 Z" fill="white"/>
+            <rect x="22" y="42" width="30" height="30" fill="white"/>
+        </svg>
+    </a>
+        
+        <div class="routine-container">
+            <h1>¡Mi Rutina Diaria Divertida! 🌟</h1>
+            <div class="days-container">
+                <button class="day-button" data-day="Lunes" onclick="setActiveDay(this)">Lunes 😊</button>
+                <button class="day-button" data-day="Martes" onclick="setActiveDay(this)">Martes 🌈</button>
+                <button class="day-button" data-day="Miércoles" onclick="setActiveDay(this)">Miércoles 🎈</button>
+                <button class="day-button" data-day="Jueves" onclick="setActiveDay(this)">Jueves 🌞</button>
+                <button class="day-button" data-day="Viernes" onclick="setActiveDay(this)">Viernes 🎨</button>
+                <button class="day-button" data-day="Sábado" onclick="setActiveDay(this)">Sábado 🎮</button>
+                <button class="day-button" data-day="Domingo" onclick="setActiveDay(this)">Domingo 🎪</button>
+            </div>
+            <div id="routineList">
+                <!-- Los elementos de la rutina se generarán dinámicamente -->
+            </div>
+        </div>
+        <div class="celebration" id="celebration">🎉 ¡Genial! ¡Sigue así! </div>
+     
+    <script>
+    const routineItems = [
+        {
+            icon: '<img src="./imagenes/rutinas/levantar de la cama.png" alt="Niño despertándose" class="icon">',
+            text: "Me levanto"
+        },
+        {
+            icon: '<img src="./imagenes/rutinas/subirse la camiseta.png" alt="Vestirse" class="icon">',
+            text: "Me visto"
+        },
+        {
+            icon: '<img src="./imagenes/rutinas/iralbaño.png" alt="Ir al baño" class="icon">',
+            text: "Voy al baño"
+        },
+        {
+            icon: '<img src="./imagenes/rutinas/cepillar los dientes.png" alt="Cepillarse los dientes" class="icon">',
+            text: "Me lavo los dientes"
+        },
+        {
+            icon: '<img src="./imagenes/rutinas/lavado de manos.png" alt="Lavarse las manos" class="icon">',
+            text: "Me lavo las manos"
+        },
+        {
+            icon: '<img src="./imagenes/rutinas/secar las manos.png" alt="Secarse las manos" class="icon">',
+            text: "Me seco las manos"
+        },
+        
+        {
+            icon: '<img src="./imagenes/rutinas/desayunar (1).png" alt="Desayuno" class="icon">',
+            text: "Desayuno"
+        },
+      
+        {
+            icon: '<img src="./imagenes/rutinas/escuela.png" alt="Prepararse para la escuela" class="icon">',
+            text: "Me preparo para la escuela"
+        },
+        {
+            icon: '<img src="./imagenes/rutinas/terapias.png" alt="Ir a terapia" class="icon">',
+            text: "Voy a terapia"
+        },
+        {
+            icon: '<img src="./imagenes/rutinas/jugar al corro.png" alt="Jugando" class="icon">',
+            text: "Juego"
+        },
+        {
+            icon: '<img src="./imagenes/rutinas/escuela (2).png" alt="Haciendo tarea" class="icon">',
+            text: "Hago la tarea"
+        },
+        {
+            icon: '<img src="./imagenes/rutinas/comer (2).png" alt="Cenando" class="icon">',
+            text: "Ceno"
+        },
+        {
+            icon: '<img src="./imagenes/rutinas/ducha.png" alt="Bañarse" class="icon">',
+            text: "Me baño"
+        },
+        {
+            icon: '<img src="./imagenes/rutinas/dormir.png" alt="Ir a dormir" class="icon">',
+            text: "Me voy a dormir"
+        }
+    ];
+    
+    const dayProgress = {
+        Lunes: { checked: [], progress: 0 },
+        Martes: { checked: [], progress: 0 },
+        Miércoles: { checked: [], progress: 0 },
+        Jueves: { checked: [], progress: 0 },
+        Viernes: { checked: [], progress: 0 },
+        Sábado: { checked: [], progress: 0 },
+        Domingo: { checked: [], progress: 0 }
+    };
+    
+    const completedDays = new Set();
+    
+    function createRoutineItems() {
+        const container = document.getElementById('routineList');
+        container.innerHTML = '';
+        routineItems.forEach((item, index) => {
+            const div = document.createElement('div');
+            div.className = 'routine-item';
+            div.innerHTML = `
+                <div class="icon-container" onclick="repeatText(this.nextElementSibling, '${item.text}')">${item.icon}</div>
+                <span class="routine-text" onclick="repeatText(this, '${item.text}')">${item.text}</span>
+                <input type="checkbox" class="checkbox" onchange="checkItem(this)">
+            `;
+            container.appendChild(div);
+        });
+    }
+    
+    function updateProgressBar(currentDay) {
+        const totalItems = routineItems.length;
+        const checkedItems = dayProgress[currentDay].checked.length;
+        const progressPercentage = (checkedItems / totalItems) * 100;
+        
+        const dayButton = document.querySelector(`.day-button[data-day="${currentDay}"]`);
+        if (dayButton) {
+            dayButton.classList.remove('progress-25', 'progress-50', 'progress-75', 'completed');
+            
+            if (progressPercentage >= 25 && progressPercentage < 50) {
+                dayButton.classList.add('progress-25');
+            } else if (progressPercentage >= 50 && progressPercentage < 75) {
+                dayButton.classList.add('progress-50');
+            } else if (progressPercentage >= 75 && progressPercentage < 100) {
+                dayButton.classList.add('progress-75');
+            } else if (progressPercentage === 100) {
+                dayButton.classList.add('completed');
+            }
+            
+            dayProgress[currentDay].progress = progressPercentage;
+        }
+    }
+    
+    function checkItem(checkbox) {
+        const routineItem = checkbox.parentElement;
+        const activeDay = document.querySelector('.day-button.active');
+        const currentDay = activeDay.dataset.day;
+        const index = Array.from(document.querySelectorAll('.checkbox')).indexOf(checkbox);
+        
+        if (checkbox.checked) {
+            routineItem.classList.add('completed');
+            if (!dayProgress[currentDay].checked.includes(index)) {
+                dayProgress[currentDay].checked.push(index);
+            }
+            showCelebration();
+        } else {
+            routineItem.classList.remove('completed');
+            dayProgress[currentDay].checked = dayProgress[currentDay].checked.filter(i => i !== index);
+        }
+        
+        updateProgressBar(currentDay);
+        checkDayCompletion();
+    }
+    
+    function checkDayCompletion() {
+        const checkboxes = document.querySelectorAll('.checkbox');
+        const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+        if (allChecked) {
+            const activeDay = document.querySelector('.day-button.active');
+            if (activeDay) {
+                activeDay.classList.add('completed');
+                completedDays.add(activeDay.dataset.day);
+            }
+        }
+    }
+    
+    function updateDayCompletion() {
+        const activeDay = document.querySelector('.day-button.active');
+        if (activeDay) {
+            const checkboxes = document.querySelectorAll('.checkbox');
+            const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+            if (!allChecked) {
+                activeDay.classList.remove('completed');
+                completedDays.delete(activeDay.dataset.day);
+            }
+        }
+    }
+    
+    function showCelebration() {
+        const celebration = document.getElementById('celebration');
+        celebration.style.display = 'block';
+        setTimeout(() => {
+            celebration.style.display = 'none';
+        }, 1000);
+    }
+    
+    function repeatRoutineText(text) {
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'es-ES';
+        speechSynthesis.speak(utterance);
+    }
+    
+    function repeatText(element, text) {
+        element.classList.add('repeating');
+        
+        setTimeout(() => {
+            element.classList.remove('repeating');
+        }, 500);
+        
+        repeatRoutineText(text);
+    }
+    
+    function setActiveDay(button) {
+        document.querySelectorAll('.day-button').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        button.classList.add('active');
+        const currentDay = button.dataset.day;
+        
+        // Speak the day name
+        repeatRoutineText(currentDay);
+        
+        // Reset checkboxes and completed states
+        document.querySelectorAll('.checkbox').forEach((checkbox, index) => {
+            const routineItem = checkbox.parentElement;
+            if (dayProgress[currentDay].checked.includes(index)) {
+                checkbox.checked = true;
+                routineItem.classList.add('completed');
+            } else {
+                checkbox.checked = false;
+                routineItem.classList.remove('completed');
+            }
+        });
+    
+        // Restore progress for all days
+        Object.entries(dayProgress).forEach(([day, data]) => {
+            const dayButton = document.querySelector(`.day-button[data-day="${day}"]`);
+            const progressPercentage = (data.checked.length / routineItems.length) * 100;
+            
+            dayButton.classList.remove('progress-25', 'progress-50', 'progress-75', 'completed');
+            
+            if (progressPercentage >= 25 && progressPercentage < 50) {
+                dayButton.classList.add('progress-25');
+            } else if (progressPercentage >= 50 && progressPercentage < 75) {
+                dayButton.classList.add('progress-50');
+            } else if (progressPercentage >= 75 && progressPercentage < 100) {
+                dayButton.classList.add('progress-75');
+            } else if (progressPercentage === 100) {
+                dayButton.classList.add('completed');
+            }
+        });
+    }
+    
+    // Initialize the routine
+    createRoutineItems();
+    const lunesButton = document.querySelector('.day-button[data-day="Lunes"]');
+    if (lunesButton) {
+        // Set Lunes as active without triggering the speech
+        document.querySelectorAll('.day-button').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        lunesButton.classList.add('active');
+        
+        // Initialize checkboxes and completed states for Lunes
+        const currentDay = lunesButton.dataset.day;
+        document.querySelectorAll('.checkbox').forEach((checkbox, index) => {
+            const routineItem = checkbox.parentElement;
+            if (dayProgress[currentDay].checked.includes(index)) {
+                checkbox.checked = true;
+                routineItem.classList.add('completed');
+            } else {
+                checkbox.checked = false;
+                routineItem.classList.remove('completed');
+            }
+        });
+    }
+    </script>
+    </body></html>
