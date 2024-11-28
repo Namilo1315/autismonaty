@@ -6,7 +6,7 @@
       --primary: #FFD93D;
       --secondary: #FFB347;  
       --accent: #FFD93D;
-      --background: #F4F9F9;
+      --background: #ffffff;
       --text: #2C3E50;
     }
     
@@ -24,9 +24,14 @@
       display: flex;
       flex-direction: column;
     }
-    
+    .titulo{
+      color: #ffd000;
+       margin-bottom: 2rem; 
+       font-weight: 800;
+       font-size: 50px;
+    }
     .hero {
-      background: linear-gradient(45deg, #FFD93D, #FFB347);
+      background: linear-gradient(45deg, #45abff, #0537ff);
       padding: 0rem;  
       text-align: center;
       color: white;
@@ -213,7 +218,7 @@
       <div class="row">
         <div class="col-12 text-center">
           
-          <h1 style="color: #fcd01c; margin-bottom: 2rem; font-weight: 800;">Pictogramas & Categorías</h1>
+          <h1 class="titulo">Pictogramas & Categorías</h1>
           <p class="lead fw-bold">Somos un equipo dedicado a diseñar herramientas efectivas para facilitar la comunicación, el bienestar y desarrollo de niños con autismo y/o algún trastorno en el lenguaje. Nos enfocamos en utilizar la tecnología para crear recursos educativos adaptados a las necesidades individuales de cada niño.</p>
           
         </div>
@@ -225,37 +230,48 @@
         <i class="fas fa-comments"></i>
         <h3>Hablemos</h3>
       </div>
-      
+
+      <div class="category-card" onclick="window.location='./rutinas.html'">
+        <i class="fas fa-clock"></i>
+        <h3>Rutina</h3>
+      </div>
+
+      <div class="category-card" onclick="window.location='./numero.html'">
+        <i class="fas fa-calculator"></i>
+        <h3>Números</h3>
+      </div>
+
+      <div class="category-card" onclick="window.location='./letras.html'">
+        <i class="fas fa-font"></i>
+        <h3>Letras</h3>
+      </div>
+    
+
       <div class="category-card" onclick="window.location='./emociones.html'">
         <i class="fas fa-smile-beam"></i>
         <h3>Emociones</h3>
       </div>
       
-      <div class="category-card" onclick="window.location='./rutinas.html'">
-        <i class="fas fa-clock"></i>
-        <h3>Rutina</h3>
+      <div class="category-card" onclick="window.location='./dibujar.html'">
+        <i class="fas fa-paint-brush"></i>
+        <h3>Dibujar</h3>
+      </div>
+
+      <div class="category-card" onclick="window.location='./ingles.html'">
+        <i class="fas fa-language"></i>
+        <h3>Idiomas</h3>
       </div>
     
-      <div class="category-card" onclick="window.location='./objetos.html'">
-        <i class="fas fa-cube"></i>
-        <h3>Objetos</h3>
-      </div>
+     
     
       <div class="category-card" onclick="window.location='./animales.html'">
         <i class="fas fa-paw"></i>
         <h3>Animales</h3>
       </div>
     
-      <div class="category-card" onclick="window.location='./numeros.html'">
-        <i class="fas fa-calculator"></i>
-        <h3>Números</h3>
-      </div>
+      
     
-      <div class="category-card" onclick="window.location='./letras.html'">
-        <i class="fas fa-font"></i>
-        <h3>Letras</h3>
-      </div>
-    
+     
       <div class="category-card" onclick="window.location='./familia.html'">
         <i class="fas fa-users"></i>
         <h3>Familia</h3>
@@ -266,20 +282,19 @@
         <h3>Autoregulación</h3>
       </div>
     
-      <div class="category-card" onclick="window.location='./dibujar.html'">
-        <i class="fas fa-paint-brush"></i>
-        <h3>Dibujar</h3>
-      </div>
+      
     
       <div class="category-card" onclick="window.location='./acciones.html'">
         <i class="fas fa-running"></i>
         <h3>Acciones</h3>
       </div>
-    
-      <div class="category-card" onclick="window.location='./ingles.html'">
-        <i class="fas fa-language"></i>
-        <h3>Idiomas</h3>
+
+      <div class="category-card" onclick="window.location='./objetos.html'">
+        <i class="fas fa-cube"></i>
+        <h3>Objetos</h3>
       </div>
+    
+     
     </div>
     
     <a href="https://wa.me/542616246767" class="floating-button" target="_blank">

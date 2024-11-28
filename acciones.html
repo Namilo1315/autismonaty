@@ -1,0 +1,263 @@
+<html>
+    <head>
+        <base href="./"><meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Pictograma </title>
+        <link rel="icon" type="image/jpg" href="./imagenes/caragrande.png"/><style>
+    body {
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        background: #FFF9E6;
+        padding: 20px;
+        margin: 0;
+        min-height: 100vh;
+        overflow: hidden;
+    }
+    
+    .home-button {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 1000;
+        padding: 15px;
+        background: linear-gradient(45deg, #FFD93D, #FFB347);
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    
+    .home-button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    }
+    
+    .home-button svg path,
+    .home-button svg rect {
+        fill: white;
+    }
+    
+    .home-icon {
+        width: 20px;
+        height: 20px;
+    }
+    
+    #emotionsList {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 12px;
+        padding: 15px;
+        height: calc(100vh - 200px);
+        justify-content: center;
+        align-content: start;
+        width: 100%;
+        box-sizing: border-box;
+        margin: 0 auto;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+     /* Customize scrollbar */
+     #emotionsList::-webkit-scrollbar {
+        width: 10px;
+    }
+    
+    #emotionsList::-webkit-scrollbar-track {
+        background: #FFF9E6;
+        border-radius: 10px;
+    }
+    
+    #emotionsList::-webkit-scrollbar-thumb {
+        background: #FFB347;
+        border-radius: 10px;
+    }
+    
+    #emotionsList::-webkit-scrollbar-thumb:hover {
+        background: #FFD93D;
+    }
+    
+    
+    .emotion-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        aspect-ratio: 1;
+        padding: 10px;
+        border: 2px solid #FFB347;
+        border-radius: 15px;
+        transition: all 0.3s ease;
+        background-color: white;
+        cursor: pointer;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .emotion-item:hover {
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .emotion-text {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 0.9em;
+        color: #000000;
+        font-weight: bold;
+    }
+    
+    .icon-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 75%;
+    }
+    
+    .icon-container span {
+        font-size: 3em !important;
+    }
+    
+    @media (max-width: 1200px) {
+        #emotionsList {
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        #emotionsList {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+        .home-button {
+            display: none;
+        }
+        h1 {
+            font-size: 1.8em;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        #emotionsList {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            padding: 10px;
+            height: calc(100vh - 120px);
+            overflow: visible;
+        }
+        .emotion-item {
+            padding: 8px;
+        }
+        h1 {
+            font-size: 1.5em;
+        }
+        .icon-container span {
+            font-size: 2.5em !important;
+        }
+        .routine-container {
+            overflow: visible;
+            height: auto;
+        }
+    }
+    
+    .routine-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 25px;
+        padding: 10px;
+        box-shadow: 0 0 20px rgb(255, 180, 5);
+    }
+    
+    h1 {
+        text-align: center;
+        background: linear-gradient(45deg, #FFD93D, #FFB347);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-size: 2.5em;
+       
+        animation: bounce 2s infinite;
+    }
+    
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+    </style></head><body>
+        <a href="index.html" class="home-button">
+            <svg class="home-icon" viewBox="0 0 64 64">
+                <path d="M32 2 L2 32 L12 32 L12 62 L52 62 L52 32 L62 32 Z" fill="white"/>
+                <rect x="22" y="42" width="20" height="20" fill="white"/>
+            </svg>
+        </a>
+        
+        <div class="routine-container">
+            <h1>¡Aprendamos Acciones! 🎯</h1>
+            <div id="emotionsList">
+                <!-- Actions will be generated here -->
+            </div>
+        </div>
+    
+    <script>
+    const emotionItems = [
+        { icon: '🏃', text: "CORRER" },
+        { icon: '🚶', text: "CAMINAR" },
+        { icon: '💃', text: "BAILAR" },
+        { icon: '🦘', text: "SALTAR" },
+        { icon: '🏊', text: "NADAR" },
+        { icon: '🎨', text: "PINTAR" },
+        { icon: '📖', text: "LEER" },
+        { icon: '✍️', text: "ESCRIBIR" },
+        { icon: '🎵', text: "CANTAR" },
+        { icon: '😴', text: "DORMIR" },
+        { icon: '🍽️', text: "COMER" },
+        { icon: '🚴', text: "PEDALEAR" },
+        { icon: '👋', text: "SALUDAR" },
+        { icon: '👏', text: "APLAUDIR" },
+        { icon: '🤗', text: "ABRAZAR" },
+        { icon: '🎮', text: "JUGAR" },
+        { icon: '🧘', text: "RELAJAR" },
+        { icon: '🎭', text: "ACTUAR" },
+        { icon: '🚿', text: "BAÑARSE" },
+        { icon: '🗣️', text: "HABLAR" },
+        { icon: '🤸', text: "GIRAR" },
+        { icon: '👂', text: "ESCUCHAR" },
+        { icon: '👀', text: "MIRAR" },
+        { icon: '🧗', text: "TREPAR" },
+        { icon: '🏋️', text: "LEVANTAR" },
+        { icon: '🤒', text: "DOLOR DE CABEZA" },
+        { icon: '🦷', text: "DOLOR DE DIENTES" },
+        { icon: '🤢', text: "DOLOR DE ESTÓMAGO" },
+        { icon: '🦴', text: "DOLOR DE HUESOS" }
+    ];
+    
+    function createEmotionItems() {
+        const container = document.getElementById('emotionsList');
+        container.innerHTML = '';
+        emotionItems.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'emotion-item';
+            div.innerHTML = `
+                <div class="icon-container" onclick="speakEmotion('${item.text}')">
+                    <span>${item.icon}</span>
+                </div>
+                <span class="emotion-text" onclick="speakEmotion('${item.text}')">${item.text}</span>
+            `;
+            container.appendChild(div);
+        });
+    }
+    
+    function speakEmotion(text) {
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'es-ES';
+        speechSynthesis.speak(utterance);
+    }
+    
+    // Initialize the actions
+    createEmotionItems();
+    
+    // Enable touch scrolling with smooth behavior
+    document.getElementById('emotionsList').style.scrollBehavior = 'smooth';
+    </script>
+    </body></html>
