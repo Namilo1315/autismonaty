@@ -117,6 +117,21 @@
     .icon-container span {
         font-size: 2.5em !important;
     }
+    h1 {
+        text-align: center;
+        background: linear-gradient(45deg, #FFD93D, #FFB347);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-size: 3em;
+       
+        animation: bounce 2s infinite;
+    }
+    
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
     
     @media (max-width: 1200px) {
         #emotionsList {
@@ -140,21 +155,21 @@
     }
     
     @media (max-width: 480px) {
-        #emotionsList {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            padding: 10px;
-        }
-        .emotion-item {
-            padding: 8px;
-        }
-        h1 {
-            font-size: 1.5em;
-        }
-        .icon-container span {
-            font-size: 2em !important;
-        }
+    #emotionsList {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        padding: 8px;
     }
+    .emotion-item {
+        padding: 6px;
+    }
+    h1 {
+        font-size: 1.5em;
+    }
+    .icon-container span {
+        font-size: 3em !important;
+    }
+}
     
     .routine-container {
         max-width: 1100px;
@@ -168,22 +183,10 @@
     width: 0;
     display: none;
 } 
-    h1 {
-        text-align: center;
-        background: linear-gradient(45deg, #FFD93D, #FFB347);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        font-size: 3em;
-       
-        animation: bounce 2s infinite;
-    }
-    
-    @keyframes bounce {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-10px); }
-    }
-    </style></head><body>
+   
+    </style>
+    </head>
+    <body>
         <a href="index.html" class="home-button">
             <svg class="home-icon" viewBox="0 0 64 64">
                 <path d="M32 2 L2 32 L12 32 L12 62 L52 62 L52 32 L62 32 Z" fill="white"/>
@@ -192,7 +195,7 @@
         </a>
         
         <div class="routine-container">
-            <h1> ¡Aprendamos algunos Objetos!</h1>
+            <h1>¡Aprendamos algunos Objetos!</h1>
             <div id="emotionsList">
                 <!-- Objects will be generated here -->
             </div>
