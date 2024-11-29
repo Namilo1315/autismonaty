@@ -25,24 +25,12 @@
       flex-direction: column;
     }
     .titulo{
-      color: #ffd000;
-       margin-bottom: 2rem; 
+      color: #ff2600;
+       margin-bottom: 0rem; 
        font-weight: 800;
        font-size: 50px;
     }
-    .hero {
-      background: linear-gradient(45deg, #e94545, #FFB347);
-      padding: 0rem;  
-      text-align: center;
-      color: white;
-      position: relative;
-      overflow: hidden;
-      min-height: 250px;  
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
+   
     
     .logo {
       width: 120px;  
@@ -69,7 +57,7 @@
       position: relative;
       border: 4px solid transparent;
       box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-      height: 140px;
+      height: 110px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -96,7 +84,8 @@
     }
     
     .category-card i {
-      font-size: 3.0rem;
+      margin-top: 10px;
+      font-size: 2.1rem;
       margin-bottom: 0rem;
       color: white;
       text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
@@ -163,62 +152,57 @@
     </head>
     <body>
     
-    <div class="hero">
-      <svg class="logo" viewBox="0 0 200 200">
-        <rect x="40" y="40" width="120" height="100" rx="20" fill="#FFD93D" stroke="#333" stroke-width="4"/>
-        
-        <g>
-          <line x1="40" y1="80" x2="20" y2="60" stroke="#333" stroke-width="4" stroke-linecap="round">
-            <animate attributeName="y2" 
-                     values="60;40;60"
-                     dur="1s"
-                     repeatCount="indefinite"/>
-          </line>
-        </g>
-    
-        <g>
-          <line x1="160" y1="80" x2="180" y2="60" stroke="#333" stroke-width="4" stroke-linecap="round">
-            <animate attributeName="y2" 
-                     values="60;40;60"
-                     dur="1s"
-                     repeatCount="indefinite"/>
-          </line>
-        </g>
-        
-        <g class="eyes">
-          <circle cx="80" cy="80" r="16" fill="#fff" stroke="#333" stroke-width="3"/>
-          <circle cx="120" cy="80" r="16" fill="#fff" stroke="#333" stroke-width="3"/>
-          <circle cx="80" cy="80" r="8" fill="#333">
-            <animate attributeName="cy" values="80;75;80" dur="2s" repeatCount="indefinite"/>
-          </circle>
-          <circle cx="120" cy="80" r="8" fill="#333">
-            <animate attributeName="cy" values="80;75;80" dur="2s" repeatCount="indefinite"/>
-          </circle>
-        </g>
-        
-        <line x1="100" y1="40" x2="100" y2="20" stroke="#333" stroke-width="4"/>
-        <circle cx="100" cy="16" r="8" fill="#FFB347"/>
-        
-        <path d="M70 110 Q100 130 130 110" fill="none" stroke="#333" stroke-width="4" stroke-linecap="round">
-          <animate attributeName="d" 
-                   values="M70 110 Q100 130 130 110;M70 110 Q100 140 130 110;M70 110 Q100 130 130 110" 
-                   dur="2s" 
-                   repeatCount="indefinite"/>
-        </path>
-        
-        <circle cx="40" cy="140" r="10" fill="#FFB347" opacity="0.6"/>
-        <circle cx="160" cy="140" r="10" fill="#FFB347" opacity="0.6"/>
-      </svg>
-      
-      <h1  style="font-weight: 800;">¡Bienvenidos a PictoComunica!</h1>
-     <p class="mt-3 fw-bold">Herramientas interactivas para el desarrollo y la comunicación</p>
-    </div>
+   
     
     <div class="container mt-4">
       <div class="row">
         <div class="col-12 text-center">
           
-          <h1 class="titulo">Pictogramas & Categorías</h1>
+          <h1 class="titulo">  <svg class="logo" viewBox="0 0 200 200">
+            <rect x="40" y="40" width="120" height="100" rx="20" fill="#FFD93D" stroke="#333" stroke-width="4"/>
+            
+            <g>
+              <line x1="40" y1="80" x2="20" y2="60" stroke="#333" stroke-width="4" stroke-linecap="round">
+                <animate attributeName="y2" 
+                         values="60;40;60"
+                         dur="1s"
+                         repeatCount="indefinite"/>
+              </line>
+            </g>
+        
+            <g>
+              <line x1="160" y1="80" x2="180" y2="60" stroke="#333" stroke-width="4" stroke-linecap="round">
+                <animate attributeName="y2" 
+                         values="60;40;60"
+                         dur="1s"
+                         repeatCount="indefinite"/>
+              </line>
+            </g>
+            
+            <g class="eyes">
+              <circle cx="80" cy="80" r="16" fill="#fff" stroke="#333" stroke-width="3"/>
+              <circle cx="120" cy="80" r="16" fill="#fff" stroke="#333" stroke-width="3"/>
+              <circle cx="80" cy="80" r="8" fill="#333">
+                <animate attributeName="cy" values="80;75;80" dur="2s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="120" cy="80" r="8" fill="#333">
+                <animate attributeName="cy" values="80;75;80" dur="2s" repeatCount="indefinite"/>
+              </circle>
+            </g>
+            
+            <line x1="100" y1="40" x2="100" y2="20" stroke="#333" stroke-width="4"/>
+            <circle cx="100" cy="16" r="8" fill="#FFB347"/>
+            
+            <path d="M70 110 Q100 130 130 110" fill="none" stroke="#333" stroke-width="4" stroke-linecap="round">
+              <animate attributeName="d" 
+                       values="M70 110 Q100 130 130 110;M70 110 Q100 140 130 110;M70 110 Q100 130 130 110" 
+                       dur="2s" 
+                       repeatCount="indefinite"/>
+            </path>
+            
+            <circle cx="40" cy="140" r="10" fill="#FFB347" opacity="0.6"/>
+            <circle cx="160" cy="140" r="10" fill="#FFB347" opacity="0.6"/>
+          </svg> ¡Bienvenidos a PictoComunica!</h1>
           <p class="lead fw-bold">Somos un equipo dedicado a diseñar herramientas efectivas para facilitar la comunicación, el bienestar y desarrollo de niños con autismo y/o algún trastorno en el lenguaje. Nos enfocamos en utilizar la tecnología para crear recursos educativos adaptados a las necesidades individuales de cada niño.</p>
           
         </div>
@@ -301,11 +285,11 @@
       <i class="fab fa-whatsapp fa-2x"></i>
     </a>
     
-    <footer class="text-center py-4 mt-5" style="background: linear-gradient(45deg, #FFD93D, #FFB347); color: white;">
+    <footer class="text-center py-2 mt-2" style="background: linear-gradient(45deg, #e94545, #FFB347); color: white;">
       <div class="container">
         <div class="row">
           <div class="col-12">
-            <div class="mb-3">
+            <div class="mb-1">
               <a href="https://youtube.com" class="text-white mx-2"><i class="fab fa-youtube"></i></a>
               <a href="https://instagram.com" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
               <a href="https://facebook.com" class="text-white mx-2"><i class="fab fa-facebook"></i></a>
@@ -318,3 +302,4 @@
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     </body></html>
+   
