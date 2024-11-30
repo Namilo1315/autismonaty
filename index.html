@@ -108,7 +108,7 @@
       margin-top: 10px;
       font-size: 2.1rem;
       margin-bottom: 0rem;
-      color: white;
+      color: rgb(255, 255, 255);
       text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
       transition: transform 0.4s ease;
     }
@@ -120,7 +120,7 @@
     .category-card h3 {
       font-size: 1.5rem;
       font-weight: 600;
-      color: white;
+      color: rgb(255, 255, 255);
       text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
       margin-top: 1rem;
     }
@@ -208,21 +208,21 @@
     @media (max-width: 767px) {
       .categories {
         grid-template-columns: 1fr;
-        padding: 2rem;
+        padding: 1rem;
       }
       
       .category-card {
-        height: 140px;
+        height: 100px;
       }
       .parrafo{
         font-size: 15px;
       }
       .picto{
-      color: #ff2600;
+      color: #ff6b08;
        margin-bottom: 0rem; 
-       font-weight: 800;
+      font-weight: 800;
       font-size: 30px;
-      text-decoration: none;
+      text-decoration: underline;
       text-decoration-color: linear-gradient(45deg, #f53a3a, #FFB347);
     }
     .hero {
@@ -233,10 +233,10 @@
       background: linear-gradient(45deg, #f53a3a, #FFB347);
       padding: 10px;  
       text-align: center;
-      color: white;
+      color: rgb(255, 255, 255);
       position: relative;
       overflow: hidden;
-      min-height: 0px;  
+      min-height: 250px;  
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -251,6 +251,25 @@
       height: 90px;  
       margin-bottom: 0rem;  
      
+    }
+    .parrafo{
+      display: none;
+    }
+    .parrafo1 {
+      opacity: 0; /* Comienza invisible */
+      transform: translateY(20px); /* Posición inicial más abajo */
+      animation: aparecer 2s ease-out forwards; /* Animación para aparecer */
+    }
+
+    @keyframes aparecer {
+      from {
+        opacity: 0;
+        transform: translateY(20px); /* Inicia desplazada */
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0); /* Termina en su posición normal */
+      }
     }
     }
     </style>
@@ -309,8 +328,22 @@
         </svg>
         
         <h1 class="aa">¡Bienvenidos a PictoComunica!</h1>
-      
+       
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col-12 text-center">
+          
+         
+          <p class="fw-bold parrafo1 ">Somos un equipo dedicado a diseñar herramientas efectivas para facilitar la comunicación, el bienestar y desarrollo de niños con autismo y/o algún trastorno en el lenguaje. Nos enfocamos en utilizar la tecnología para crear recursos educativos adaptados a las necesidades individuales de cada niño.</p>
+         
+        </div>
       </div>
+    </div>
+      </div>
+
+
+
+      
       <div class="hero">
         
         <h1 class="aa"> <svg class="logo" viewBox="0 0 200 200">
