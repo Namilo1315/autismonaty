@@ -868,5 +868,8 @@
             .borrar{
                 display: none;
             }
+            .repro{
+              margin-right: 10px;
+            }
            
  }
