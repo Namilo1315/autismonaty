@@ -7,12 +7,14 @@
     <link rel="icon" type="image/jpg" href="./imagenes/caragrande.png"/>
     
     <style>
-    :root {
-      --color-brown: #FFD93D;
-      --color-golden: #FFB347;
-      --color-dark-golden: #FF7A47;
-      --color-light-cream: #FFE5DC;
+   :root {
+      --primary: #FFD93D;
+      --secondary: #FFB347;  
+      --accent: #FFD93D;
+      --background: #ffffff;
+      --text: #2C3E50;
     }
+    
     * {
       box-sizing: border-box;
       margin: 0;
@@ -86,6 +88,7 @@
     height: 20px;
 }
 
+    
     
     .number-container {
       display: grid;
@@ -184,9 +187,7 @@
         font-size: 20px;
         padding: 12px 20px;
       }
-      h1 {
-        font-size: 3.5em;
-      }
+     
       h1 {
             font-size: 1.6em;
         }
@@ -222,45 +223,59 @@
     }
     
     @media (max-width: 480px) {
-      body {
-        padding: 5px;
-      }
-      .header-banner {
-        padding: 8px;
-        gap: 8px;
-        margin-bottom: 10px;
-      }
-      .home-icon {
-        padding: 8px;
-      }
-      .home-icon svg {
-        width: 24px;
-        height: 24px;
-      }
-      .number-container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 6px;
-        padding: 5px;
-      }
-      .number {
-        font-size: 28px;
-        margin-bottom: 4px;
-      }
-      .number-box {
-        padding: 6px;
-        border-width: 3px;
-        border-radius: 15px;
-      }
-      .play-button {
-        font-size: 10px;
-        padding: 4px 8px;
-        margin-top: 2px;
-        border-radius: 12px;
-      }
-      h1 {
-        font-size: 1.4em;
-      }
-    }
+  body {
+    padding: 10px;
+    font-size: 16px;
+  }
+  .header-banner {
+    padding: 12px;
+    gap: 12px;
+    margin-bottom: 15px;
+  }
+  .home-icon {
+    padding: 10px;
+  }
+  .home-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+  .number-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 10px;
+  }
+  .number {
+    font-size: 32px;
+    margin-bottom: 6px;
+    text-align: center;
+    line-height: 1.2;
+  }
+  .number-box {
+    padding: 12px;
+    border-width: 3px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90px;
+    width: 100%;
+    background-color: #f9f9f9;
+  }
+  .play-button {
+    font-size: 12px;
+    padding: 6px 12px;
+    margin-top: 4px;
+    border-radius: 15px;
+  }
+  h1 {
+    font-size: 1.6em;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+}
+
+
     </style>
     </head>
     <body>
